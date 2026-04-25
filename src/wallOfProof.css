@@ -1,0 +1,951 @@
+/* ================================================================
+   THE PROOF VAULT — Holographic Achievement Museum
+   A never-seen-before layout: filmstrip certificates + scattered
+   polaroid achievements with full-scene 3D mouse tracking
+   ================================================================ */
+
+/* ── Section Base ─────────────────────────────────────────────── */
+.proof-vault {
+  position: relative;
+  padding: 120px 0 140px;
+  overflow: hidden;
+  background: #030305;
+  isolation: isolate;
+}
+
+/* ── Animated Grid Background ─────────────────────────────────── */
+.proof-vault::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(21,149,182,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(21,149,182,0.04) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse 70% 50% at 50% 50%, black 30%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 50% at 50% 50%, black 30%, transparent 70%);
+  animation: grid-drift 20s linear infinite;
+  z-index: 0;
+}
+
+@keyframes grid-drift {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(80px, 80px); }
+}
+
+/* Scan line overlay */
+.proof-vault::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,0.03) 2px,
+    rgba(0,0,0,0.03) 4px
+  );
+  pointer-events: none;
+  z-index: 100;
+}
+
+/* ── 3D Scene Container (tracks mouse) ────────────────────────── */
+.proof-scene {
+  position: relative;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 24px;
+  transform-style: preserve-3d;
+  transition: transform 0.15s ease-out;
+  z-index: 2;
+}
+
+/* ── Glitch Header ────────────────────────────────────────────── */
+.vault-header {
+  text-align: center;
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.vault-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 24px;
+  border-radius: 50px;
+  background: rgba(21,149,182,0.06);
+  border: 1px solid rgba(21,149,182,0.15);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #1595b6;
+  margin-bottom: 28px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.vault-eyebrow .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #1595b6;
+  box-shadow: 0 0 10px #1595b6;
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; box-shadow: 0 0 10px #1595b6; }
+  50% { opacity: 0.4; box-shadow: 0 0 20px #1595b6, 0 0 40px #1595b6; }
+}
+
+.vault-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: #fff;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.vault-title .holo-text {
+  position: relative;
+  display: inline-block;
+  background: linear-gradient(
+    90deg,
+    #ffffff 0%,
+    #cffafe 30%,
+    #1595b6 50%,
+    #cffafe 70%,
+    #ffffff 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: holo-shift 4s linear infinite;
+}
+
+@keyframes holo-shift {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+.vault-subtitle {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.35);
+  max-width: 480px;
+  margin: 0 auto 60px;
+  line-height: 1.7;
+}
+
+/* ── Section Divider Labels ───────────────────────────────────── */
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 36px;
+  padding: 0 4px;
+}
+
+.section-label .label-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(21,149,182,0.3), transparent);
+}
+
+.section-label .label-line:last-child {
+  background: linear-gradient(90deg, transparent, rgba(21,149,182,0.3));
+}
+
+.section-label span {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  white-space: nowrap;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   CERTIFICATE FILMSTRIP — Horizontal Scrolling with Holo Effect
+   ═══════════════════════════════════════════════════════════════ */
+.cert-filmstrip {
+  position: relative;
+  margin-bottom: 80px;
+  overflow: visible;
+}
+
+.cert-track-wrapper {
+  overflow: hidden;
+  padding: 30px 0 40px;
+  margin: 0 -24px;
+  padding-left: 24px;
+  padding-right: 24px;
+  /* Allow horizontal scrolling */
+  cursor: grab;
+}
+
+.cert-track-wrapper:active {
+  cursor: grabbing;
+}
+
+.cert-track {
+  display: flex;
+  gap: 32px;
+  padding: 20px 0;
+  animation: filmstrip-scroll 30s linear infinite;
+  width: max-content;
+}
+
+.cert-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes filmstrip-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ── Holographic Certificate Card ─────────────────────────────── */
+.holo-card {
+  position: relative;
+  width: 340px;
+  height: 240px;
+  border-radius: 18px;
+  overflow: hidden;
+  flex-shrink: 0;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.holo-card:hover {
+  transform: scale(1.05) translateY(-8px);
+  z-index: 10;
+}
+
+/* The actual image */
+.holo-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 18px;
+}
+
+/* Holographic rainbow foil overlay */
+.holo-card .holo-foil {
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  background: linear-gradient(
+    125deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0) 35%,
+    rgba(255, 255, 255, 0.2) 45%,
+    rgba(255, 255, 255, 0.6) 50%,
+    rgba(255, 255, 255, 0.2) 55%,
+    rgba(255, 255, 255, 0) 65%,
+    transparent 100%
+  );
+  background-size: 250% 250%;
+  mix-blend-mode: overlay;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.holo-card:hover .holo-foil {
+  opacity: 1;
+  animation: holo-rainbow 3s ease-in-out infinite;
+}
+
+@keyframes holo-rainbow {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+  100% { background-position: 0% 0%; }
+}
+
+/* Holo sparkle grid texture */
+.holo-card .holo-sparkle {
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(255,255,255,0.08) 0.5px, transparent 0.5px),
+    radial-gradient(circle at 80% 40%, rgba(255,255,255,0.05) 0.5px, transparent 0.5px),
+    radial-gradient(circle at 40% 80%, rgba(255,255,255,0.06) 0.5px, transparent 0.5px);
+  background-size: 6px 6px, 8px 8px, 7px 7px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 3;
+  mix-blend-mode: overlay;
+}
+
+.holo-card:hover .holo-sparkle {
+  opacity: 1;
+}
+
+/* Glowing border */
+.holo-card::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 20px;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    rgba(21,149,182,0.1) 45deg,
+    rgba(21,149,182,0.5) 90deg,
+    rgba(21,149,182,0.1) 135deg,
+    transparent 180deg,
+    rgba(255,255,255,0.1) 225deg,
+    rgba(255,255,255,0.4) 270deg,
+    rgba(255,255,255,0.1) 315deg,
+    transparent 360deg
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: -1;
+}
+
+.holo-card:hover::before {
+  opacity: 1;
+  animation: border-spin 4s linear infinite;
+}
+
+@keyframes border-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Card glass overlay with title */
+.holo-card .card-glass {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 60%, transparent 100%);
+  z-index: 4;
+  transform: translateY(10px);
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.holo-card:hover .card-glass {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.card-glass h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+}
+
+.card-glass p {
+  font-size: 11px;
+  color: rgba(255,255,255,0.5);
+  margin: 4px 0 0;
+}
+
+/* Certificate badge */
+.cert-badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  padding: 4px 12px;
+  border-radius: 50px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.15);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #ffffff;
+  z-index: 5;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ACHIEVEMENT HANGING GALLERY — Cards on 3D Threads
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Glowing clothesline bar */
+.hanging-line {
+  position: relative;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(21,149,182,0.1) 15%,
+    rgba(255,255,255,0.4) 50%,
+    rgba(21,149,182,0.1) 85%,
+    transparent 100%
+  );
+  border-radius: 4px;
+  box-shadow: 0 0 15px rgba(255,255,255,0.2), 0 0 30px rgba(21,149,182,0.1);
+  margin-bottom: 0;
+}
+/* Screw anchors at each end */
+.hanging-line::before,
+.hanging-line::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #aaa 0%, #555 60%, #222 100%);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.5), 0 0 10px rgba(21,149,182,0.3);
+}
+.hanging-line::before { left: 6%; }
+.hanging-line::after  { right: 6%; }
+
+/* Board that holds all hanging units */
+.polaroid-board {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+  padding-top: 0;
+  perspective: 1400px;
+  flex-wrap: wrap;
+}
+
+/* ── Each hanging unit: SVG thread + card ─────────────────────── */
+.hanging-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform-style: preserve-3d;
+  transform-origin: top center;
+  animation: card-sway 6s ease-in-out infinite;
+  position: relative;
+}
+
+/* Staggered swing timing + different depths */
+.hanging-unit:nth-child(1) { animation-delay: 0s;    animation-duration: 5.4s; transform: translateZ(0px); }
+.hanging-unit:nth-child(2) { animation-delay: -1.3s; animation-duration: 6.1s; transform: translateZ(20px); }
+.hanging-unit:nth-child(3) { animation-delay: -0.7s; animation-duration: 5.8s; transform: translateZ(-10px); }
+.hanging-unit:nth-child(4) { animation-delay: -2.1s; animation-duration: 6.6s; transform: translateZ(15px); }
+.hanging-unit:nth-child(5) { animation-delay: -0.4s; animation-duration: 5.2s; transform: translateZ(5px); }
+
+@keyframes card-sway {
+  0%,100% { transform: rotate(0deg);   }
+  20%     { transform: rotate(3deg) translateZ(12px);  }
+  40%     { transform: rotate(-2deg) translateZ(8px); }
+  60%     { transform: rotate(2.5deg) translateZ(14px); }
+  80%     { transform: rotate(-1.5deg) translateZ(6px); }
+}
+
+/* Pause swing on hover, show glow */
+.hanging-unit:hover {
+  animation-play-state: paused;
+  z-index: 50;
+}
+
+/* Background Dim/Blur Overlay triggered by :hover on any hanging unit */
+.polaroid-board::before {
+  content: '';
+  position: absolute;
+  top: -150vh; 
+  left: -150vw;
+  width: 400vw; 
+  height: 400vh;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 25; /* Higher than normal elements but below z-index: 50 of hovered unit */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  transform: translateZ(-10px); /* Keeps it just behind in 3D space */
+}
+
+.polaroid-board:has(.hanging-unit:hover)::before {
+  opacity: 1;
+}
+
+/* ── SVG Thread ───────────────────────────────────────────────── */
+.thread-svg {
+  width: 50px;
+  flex-shrink: 0;
+  display: block;
+  overflow: visible;
+}
+
+/* Metallic clip/pin at top of thread */
+.thread-pin {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 38% 32%, #e0e0e0 0%, #aaa 45%, #555 100%);
+  box-shadow:
+    0 2px 5px rgba(0,0,0,0.45),
+    inset 0 1px 2px rgba(255,255,255,0.7);
+  margin-bottom: -7px;
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+}
+
+/* ── Polaroid Card ────────────────────────────────────────────── */
+.polaroid {
+  position: relative;
+  background: #f5f5f0;
+  padding: 12px 12px 48px;
+  border-radius: 4px;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: box-shadow 0.4s ease;
+  box-shadow:
+    0 4px 8px rgba(0,0,0,0.3),
+    0 12px 30px rgba(0,0,0,0.2);
+  width: 220px;
+  flex-shrink: 0;
+  transform: rotate(var(--static-rot, 0deg));
+}
+
+/* Per-card slight static tilt (not hover, set via JS normally but CSS here) */
+.hanging-unit:nth-child(1) .polaroid { --static-rot: -4deg; }
+.hanging-unit:nth-child(2) .polaroid { --static-rot:  2deg; }
+.hanging-unit:nth-child(3) .polaroid { --static-rot: -1deg; }
+.hanging-unit:nth-child(4) .polaroid { --static-rot:  3deg; }
+.hanging-unit:nth-child(5) .polaroid { --static-rot: -2deg; }
+
+/* Pin/tape decoration */
+.polaroid .tape {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-2deg);
+  width: 50px;
+  height: 18px;
+  background: rgba(255,220,150,0.6);
+  border-radius: 2px;
+  z-index: 2;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+}
+
+.hanging-unit:nth-child(even) .polaroid .tape {
+  transform: translateX(-50%) rotate(3deg);
+  background: rgba(200,220,255,0.5);
+}
+
+.polaroid-img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  display: block;
+  border-radius: 1px;
+  filter: saturate(0.85) contrast(1.05);
+  transition: filter 0.5s ease;
+}
+
+.hanging-unit:hover .polaroid-img {
+  filter: saturate(1.1) contrast(1.1);
+}
+
+.hanging-unit:hover .polaroid {
+  box-shadow:
+    0 24px 55px rgba(0,0,0,0.4),
+    0 0 60px rgba(21,149,182,0.12);
+}
+
+/* Handwritten caption */
+.polaroid-caption {
+  position: absolute;
+  bottom: 10px;
+  left: 12px;
+  right: 12px;
+  font-family: 'Caveat', 'Segoe Script', cursive;
+  font-size: 15px;
+  color: #333;
+  text-align: center;
+  line-height: 1.3;
+  pointer-events: none;
+}
+
+/* Achievement badge */
+.polaroid-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  padding: 3px 9px;
+  border-radius: 3px;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  z-index: 3;
+}
+
+.polaroid-badge.award-badge {
+  background: rgba(251,191,36,0.94);
+  color: #422006;
+  box-shadow: 0 2px 8px rgba(251,191,36,0.35);
+}
+
+.polaroid-badge.achieve-badge {
+  background: rgba(139,92,246,0.94);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(139,92,246,0.35);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   FLOATING CSS 3D OBJECTS
+   ═══════════════════════════════════════════════════════════════ */
+.vault-3d-objects {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* CSS Octahedron */
+.css-octahedron {
+  position: absolute;
+  top: 12%;
+  right: 8%;
+  width: 60px;
+  height: 60px;
+  transform-style: preserve-3d;
+  animation: spin-3d 12s linear infinite;
+}
+
+.css-octahedron .face {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-bottom: 40px solid rgba(21,149,182,0.12);
+  transform-origin: center bottom;
+}
+
+.css-octahedron .face:nth-child(1) { transform: rotateY(0deg) rotateX(35deg); }
+.css-octahedron .face:nth-child(2) { transform: rotateY(90deg) rotateX(35deg); }
+.css-octahedron .face:nth-child(3) { transform: rotateY(180deg) rotateX(35deg); }
+.css-octahedron .face:nth-child(4) { transform: rotateY(270deg) rotateX(35deg); }
+.css-octahedron .face:nth-child(5) { transform: rotateY(0deg) rotateX(-35deg) translateY(40px); border-bottom-color: rgba(139,92,246,0.1); }
+.css-octahedron .face:nth-child(6) { transform: rotateY(90deg) rotateX(-35deg) translateY(40px); border-bottom-color: rgba(139,92,246,0.1); }
+.css-octahedron .face:nth-child(7) { transform: rotateY(180deg) rotateX(-35deg) translateY(40px); border-bottom-color: rgba(139,92,246,0.1); }
+.css-octahedron .face:nth-child(8) { transform: rotateY(270deg) rotateX(-35deg) translateY(40px); border-bottom-color: rgba(139,92,246,0.1); }
+
+@keyframes spin-3d {
+  0% { transform: rotateX(0deg) rotateY(0deg); }
+  100% { transform: rotateX(360deg) rotateY(360deg); }
+}
+
+/* CSS Torus (ring) */
+.css-torus {
+  position: absolute;
+  bottom: 15%;
+  left: 5%;
+  width: 80px;
+  height: 80px;
+  border: 3px solid rgba(244,114,182,0.15);
+  border-radius: 50%;
+  animation: torus-spin 8s linear infinite;
+  transform: perspective(200px) rotateX(60deg);
+}
+
+.css-torus::before {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border: 2px solid rgba(244,114,182,0.08);
+  border-radius: 50%;
+}
+
+@keyframes torus-spin {
+  0% { transform: perspective(200px) rotateX(60deg) rotateZ(0deg); }
+  100% { transform: perspective(200px) rotateX(60deg) rotateZ(360deg); }
+}
+
+/* CSS Helix DNA strand */
+.css-helix {
+  position: absolute;
+  top: 55%;
+  right: 4%;
+  width: 30px;
+  height: 200px;
+}
+
+.helix-dot {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(21,149,182,0.25);
+  animation: helix-wave 4s ease-in-out infinite;
+}
+
+.helix-dot:nth-child(odd) {
+  background: rgba(139,92,246,0.2);
+  animation-direction: reverse;
+}
+
+/* Floating orb */
+.css-orb {
+  position: absolute;
+  top: 8%;
+  left: 12%;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, rgba(21,149,182,0.12), rgba(21,149,182,0.02) 60%, transparent 70%);
+  box-shadow: inset 0 0 30px rgba(21,149,182,0.05);
+  animation: orb-float 10s ease-in-out infinite;
+}
+
+@keyframes orb-float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  33% { transform: translateY(-20px) scale(1.05); }
+  66% { transform: translateY(10px) scale(0.98); }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   LIGHTBOX (shared)
+   ═══════════════════════════════════════════════════════════════ */
+.vault-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.94);
+  backdrop-filter: blur(30px);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.vault-lightbox.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.vault-lightbox-inner {
+  position: relative;
+  max-width: 90vw;
+  max-height: 85vh;
+  transform: scale(0.8) rotateX(10deg);
+  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  perspective: 800px;
+}
+
+.vault-lightbox.open .vault-lightbox-inner {
+  transform: scale(1) rotateX(0);
+}
+
+.vault-lightbox-inner img {
+  max-width: 100%;
+  max-height: 78vh;
+  border-radius: 12px;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.6), 0 0 100px rgba(21,149,182,0.1);
+}
+
+.vault-lb-close {
+  position: absolute;
+  top: -48px;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  color: #fff;
+  font-size: 18px;
+}
+
+.vault-lb-close:hover {
+  background: rgba(255,255,255,0.2);
+  transform: rotate(90deg);
+}
+
+.vault-lb-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.15);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  color: #fff;
+  font-size: 20px;
+}
+
+.vault-lb-nav:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+.vault-lb-prev { left: -64px; }
+.vault-lb-next { right: -64px; }
+
+.vault-lb-caption {
+  text-align: center;
+  margin-top: 16px;
+}
+
+.vault-lb-caption h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.vault-lb-caption p {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.4);
+  margin-top: 4px;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   AMBIENT PARTICLES
+   ═══════════════════════════════════════════════════════════════ */
+.vault-particles-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.vault-mote {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: rgba(21,149,182,0.5);
+  animation: mote-rise linear infinite;
+}
+
+@keyframes mote-rise {
+  0% {
+    transform: translateY(100vh) scale(0);
+    opacity: 0;
+  }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% {
+    transform: translateY(-20vh) scale(1);
+    opacity: 0;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SCROLL REVEAL
+   ═══════════════════════════════════════════════════════════════ */
+.vault-reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1s cubic-bezier(0.23, 1, 0.32, 1),
+              transform 1s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.vault-reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.vault-reveal.delay-1 { transition-delay: 0.1s; }
+.vault-reveal.delay-2 { transition-delay: 0.2s; }
+.vault-reveal.delay-3 { transition-delay: 0.3s; }
+
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .polaroid-board {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  
+  .polaroid {
+    width: 200px;
+  }
+
+  .polaroid:nth-child(4),
+  .polaroid:nth-child(5) {
+    grid-column: span 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .proof-vault {
+    padding: 60px 0 80px;
+  }
+  
+  .vault-subtitle {
+    margin-bottom: 36px;
+  }
+  
+  .holo-card {
+    width: 280px;
+    height: 200px;
+  }
+  
+  .polaroid-board {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    min-height: auto;
+  }
+  
+  .polaroid {
+    width: 100%;
+    max-width: 200px;
+  }
+
+  .polaroid:nth-child(1),
+  .polaroid:nth-child(2),
+  .polaroid:nth-child(3),
+  .polaroid:nth-child(4),
+  .polaroid:nth-child(5) {
+    transform: rotate(0deg) translateY(0px);
+  }
+  
+  .vault-3d-objects {
+    display: none;
+  }
+  
+  .vault-lb-prev { left: 8px; }
+  .vault-lb-next { right: 8px; }
+}
+
+@media (max-width: 480px) {
+  .polaroid-board {
+    grid-template-columns: 1fr;
+  }
+  
+  .polaroid {
+    max-width: 260px;
+  }
+
+  .cert-track {
+    gap: 20px;
+  }
+}

@@ -1,0 +1,307 @@
+/* src/theme.css: Global Classy Light Theme Override Framework */
+
+/* Base Light Theme Setup */
+body.light-mode {
+  background-color: #f8fafc !important; /* extremely sterile, bright cool-slate */
+  color: #0f172a !important; 
+}
+
+/* Invert all existing tailwind hardcoded darks securely */
+/* Override pure blacks */
+body.light-mode .bg-\[\#000000\] {
+  background-color: #f8fafc !important;
+}
+
+/* Override dark panels (Cards, Bento boxes, Dialogs) */
+body.light-mode .bg-\[\#111\] {
+  background-color: #ffffff !important;
+  border: 1px solid rgba(0,0,0,0.05) !important;
+  box-shadow: 0 10px 30px -5px rgba(0,0,0,0.08) !important;
+}
+
+/* Keep holo-cards slightly elevated in light mode */
+body.light-mode .holo-card {
+  background-color: #ffffff !important;
+  box-shadow: 0 15px 35px -5px rgba(0,0,0,0.1) !important;
+}
+body.light-mode .card-glass {
+  background: rgba(255,255,255,0.7) !important;
+  color: #0f172a !important;
+}
+
+/* Override text colors globally where white is used */
+body.light-mode .text-white {
+  color: #0f172a !important;
+}
+body.light-mode .text-\[\#b0b2c3\] {
+  color: #64748b !important;
+}
+
+/* Light Theme Navigation Buttons */
+body.light-mode .realistic-btn {
+  color: #334155; /* Darker slate for high contrast */
+  font-weight: 600;
+}
+
+body.light-mode .realistic-btn:hover {
+  color: #1595b6;
+}
+
+body.light-mode .realistic-btn::after {
+  background: #1595b6;
+}
+
+/* Light Theme CV Pill */
+body.light-mode .realistic-btn.cv-btn {
+  color: #1595b6;
+  border-color: rgba(21, 149, 182, 0.5);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+body.light-mode .realistic-btn.cv-btn:hover {
+  background: rgba(21, 149, 182, 0.1);
+  border-color: #1595b6;
+  color: #0a708a; /* Slightly darker cyan on hover */
+  box-shadow: 0 4px 15px rgba(21, 149, 182, 0.2);
+}
+
+
+/* Toggles (Sun/Moon specific handling) */
+body.light-mode .theme-sun {
+  display: none !important;
+}
+body.light-mode .theme-moon {
+  display: block !important;
+  color: #0f172a !important;
+}
+
+body:not(.light-mode) .theme-moon {
+  display: none !important;
+}
+body:not(.light-mode) .theme-sun {
+  display: block !important;
+}
+
+/* Also invert borders from pure white to soft slate */
+body.light-mode .border-white\/10 {
+  border-color: rgba(0,0,0,0.08) !important;
+}
+
+/* Fix SVG text or lines relying on #ffffff */
+body.light-mode svg path[stroke="white"] {
+  stroke: #0f172a !important;
+}
+
+/* Light Theme Contact Section Mappings */
+body.light-mode .bg-\[\#18181b\] {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 10px 30px -5px rgba(0,0,0,0.06) !important;
+}
+
+body.light-mode .bg-\[\#0f0f11\] {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+}
+
+body.light-mode .bg-\[\#0f0f11\]::placeholder {
+  color: #64748b !important;
+}
+
+body.light-mode .text-gray-400 {
+  color: #475569 !important;
+}
+
+body.light-mode h4 {
+  color: #0f172a !important;
+}
+
+/* ══════════════════════════════════════════════════════
+   LIGHT THEME — Let's Connect Section
+   ══════════════════════════════════════════════════════ */
+body.light-mode .connect-section {
+  background: transparent;
+}
+body.light-mode .connect-orb-1 {
+  background: radial-gradient(circle, rgba(21,149,182,0.12), transparent 70%);
+}
+body.light-mode .connect-orb-2 {
+  background: radial-gradient(circle, rgba(99,102,241,0.1), transparent 70%);
+}
+body.light-mode .connect-title {
+  color: #0f172a;
+}
+body.light-mode .connect-card-wrapper {
+  background: rgba(255,255,255,0.85);
+  border-color: rgba(0,0,0,0.08);
+  box-shadow:
+    0 0 0 1px rgba(21,149,182,0.1),
+    0 20px 60px rgba(0,0,0,0.1),
+    inset 0 1px 0 rgba(255,255,255,0.9);
+}
+body.light-mode .connect-form-panel {
+  background: rgba(248,250,252,0.6);
+}
+body.light-mode .connect-panel-label {
+  color: #0a7899;
+}
+body.light-mode .connect-field label {
+  color: #475569;
+}
+body.light-mode .connect-field input,
+body.light-mode .connect-field textarea {
+  background: rgba(255,255,255,0.8);
+  border-color: rgba(0,0,0,0.12);
+  color: #0f172a;
+}
+body.light-mode .connect-field input::placeholder,
+body.light-mode .connect-field textarea::placeholder {
+  color: #94a3b8;
+}
+body.light-mode .connect-field input:focus,
+body.light-mode .connect-field textarea:focus {
+  border-color: rgba(21,149,182,0.5);
+  background: rgba(21,149,182,0.04);
+  box-shadow: 0 0 0 3px rgba(21,149,182,0.1);
+}
+body.light-mode .connect-divider {
+  background: linear-gradient(to bottom, transparent, rgba(21,149,182,0.2) 30%, rgba(99,102,241,0.2) 70%, transparent);
+}
+body.light-mode .connect-info-icon {
+  background: rgba(21,149,182,0.08);
+  border-color: rgba(21,149,182,0.15);
+}
+body.light-mode .info-label {
+  color: #475569;
+}
+body.light-mode .info-value {
+  color: #1e293b;
+}
+body.light-mode .socials-label {
+  color: #475569;
+}
+body.light-mode .social-pill {
+  background: rgba(0,0,0,0.04);
+  border-color: rgba(0,0,0,0.1);
+  color: #475569;
+}
+body.light-mode .social-pill:hover {
+  background: rgba(21,149,182,0.1);
+  border-color: rgba(21,149,182,0.4);
+  color: #0a7899;
+}
+body.light-mode .social-pill-wa:hover {
+  background: rgba(34,197,94,0.08);
+  border-color: rgba(34,197,94,0.3);
+  color: #16a34a;
+}
+body.light-mode .connect-avail {
+  background: rgba(21,149,182,0.06);
+  border-color: rgba(21,149,182,0.14);
+}
+body.light-mode .avail-title {
+  color: #1e293b;
+}
+body.light-mode .avail-text {
+  color: #64748b;
+}
+
+/* ══════════════════════════════════════════════════════
+   LIGHT THEME — Bento Journey Section
+   ══════════════════════════════════════════════════════ */
+body.light-mode #Journey h2 {
+  color: #0f172a;
+}
+body.light-mode .bento-card {
+  background-color: #ffffff !important;
+  border-color: rgba(0,0,0,0.06) !important;
+  box-shadow: 0 10px 40px -10px rgba(0,0,0,0.05) !important;
+}
+body.light-mode .bento-card h3 {
+  color: #0f172a !important;
+}
+body.light-mode .bento-card p {
+  color: #475569 !important;
+}
+body.light-mode .spotlight {
+  background: radial-gradient(600px circle at var(--x) var(--y), rgba(21, 149, 182, 0.08), transparent 80%) !important;
+}
+
+/* ══════════════════════════════════════════════════════
+   LIGHT THEME — Wall of Proof (Museum)
+   ══════════════════════════════════════════════════════ */
+body.light-mode .proof-vault {
+  background: #f8fafc !important;
+}
+body.light-mode .proof-vault::before {
+  background-image:
+    linear-gradient(rgba(21,149,182,0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(21,149,182,0.1) 1px, transparent 1px) !important;
+}
+body.light-mode .vault-title {
+  color: #0f172a !important;
+}
+body.light-mode .vault-subtitle {
+  color: #64748b !important;
+}
+body.light-mode .section-label span {
+  color: #64748b !important;
+}
+body.light-mode .section-label .label-line {
+  background: linear-gradient(90deg, rgba(21,149,182,0.2), transparent) !important;
+}
+body.light-mode .holo-card {
+  background: #fff !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05) !important;
+}
+body.light-mode .card-glass {
+  background: linear-gradient(to top, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.8) 60%, transparent 100%) !important;
+}
+body.light-mode .card-glass h3 {
+  color: #0f172a !important;
+}
+body.light-mode .card-glass p {
+  color: #475569 !important;
+}
+body.light-mode .cert-badge {
+  background: rgba(15, 23, 42, 0.05) !important;
+  color: #0f172a !important;
+  border-color: rgba(15, 23, 42, 0.1) !important;
+}
+body.light-mode .polaroid-board::before {
+  background: rgba(255, 255, 255, 0.6) !important;
+}
+
+/* Unified SVG Stroke fix for Light Mode */
+body.light-mode svg path[stroke="white"],
+body.light-mode svg circle[stroke="white"],
+body.light-mode svg line[stroke="white"] {
+  stroke: #0f172a !important;
+}
+
+/* ------------------------------------------------------
+   LIGHT THEME � Particle Footer
+   ------------------------------------------------------ */
+body.light-mode #particleFooter {
+  background: #f1f5f9 !important;
+  border-top-color: rgba(0,0,0,0.06) !important;
+}
+body.light-mode #particleFooter > div:first-child {
+  color: #0a7899;
+}
+/* CSS variable approach: JS reads this to know particle colors */
+body.light-mode {
+  --particle-word1: #0f172a;
+  --particle-word2: #1595b6;
+  --particle-bg: #f1f5f9;
+}
+body:not(.light-mode) {
+  --particle-word1: #ffffff;
+  --particle-word2: #1595b6;
+  --particle-bg: #000000;
+}
+
+body.light-mode .hanging-line {
+  background: linear-gradient(90deg, transparent 0%, rgba(21,149,182,0.2) 15%, rgba(0,0,0,0.2) 50%, rgba(21,149,182,0.2) 85%, transparent 100%) !important;
+  box-shadow: 0 0 15px rgba(0,0,0,0.05) !important;
+}
