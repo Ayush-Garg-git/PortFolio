@@ -13,17 +13,19 @@
     <link rel="stylesheet" href="./src/wallOfProof.css">
     <link rel="stylesheet" href="./src/nav.css">
     <link rel="stylesheet" href="./src/theme.css">
+    <link rel="stylesheet" href="./src/responsive.css">
 <script src="matter.js" defer></script>
 </head>
-<body class="bg-[#000000] text-white font-['nunito'] light-mode">
+<body class="bg-[#000000] text-white font-['nunito'] light-mode overflow-x-hidden">
     <section class="flex flex-col justify-between h-screen  ">
-    <header class="z-10 pointer-events-none flex items-center justify-between  w-full max-w-1400  mt-4 mx-auto">
+    <header class="z-10 pointer-events-none flex items-center justify-between w-full max-w-1400 mt-6 sm:mt-8 mx-auto px-4 sm:px-6">
       <svg width="70"  height="70" viewBox="0 0 406 368" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M314.516 203.174L314.516 349.104L162.117 208.727M314.516 203.174L282.653 203.26M314.516 203.174L337.498 203.26L380.617 170.782L314.516 170.782M162.117 208.727L117.661 170.634L157.117 170.782M162.117 208.727L65.1165 301.139L20.176 301.139L137.099 188.83M200.117 170.782L282.653 96.1739L282.653 170.782M200.117 170.782L282.653 170.782M200.117 170.782L157.117 170.782M282.653 203.26L210.462 202.796L282.653 270.76L282.653 203.26ZM282.653 170.782L314.516 170.782M157.117 170.782L315.751 20.1061L314.516 170.782" stroke="white" stroke-width="10"/>
         </svg>
 
 
 
+    <!-- Desktop Navigation -->
     <nav class="nav-container absolute left-1/2 -translate-x-1/2 hidden md:flex z-50 mt-4">
         <a href="#Works" class="realistic-btn">Projects</a>
         <a href="#Journey" class="realistic-btn">Journey</a>
@@ -32,21 +34,55 @@
         <a href="./cv.html" class="realistic-btn cv-btn">View CV</a>
     </nav>
 
-    <div class="flex gap-6 pointer-events-auto z-50">
-        <a href="tel:9818549572">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="pointer-events-auto feather feather-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+    <!-- Header Action Pill -->
+    <div class="flex items-center gap-3 pointer-events-auto z-50">
+      <!-- Pill dock grouping all 3 actions -->
+      <div class="action-pill">
+        <a href="tel:9818549572" class="action-pill-btn" title="Call">
+          <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
         </a>
-
-        <div id="themeToggleBtn" class="cursor-pointer hover:scale-110 transition-transform">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon theme-moon hidden"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sun theme-sun "><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        <span class="action-pill-divider"></span>
+        <div id="themeToggleBtn" class="action-pill-btn cursor-pointer" title="Theme">
+          <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon theme-moon hidden"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sun theme-sun"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
         </div>
-
-        <a href="https://wa.me/9818549572?text='Hello , Let's connect " target="_blank">
-            <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="whatsapp" class="pointer-events-auto  svg-inline--fa fa-whatsapp fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 448 512"><path fill="currentColor" d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"></path></svg>
+        <span class="action-pill-divider"></span>
+        <a href="https://wa.me/9818549572?text='Hello , Let's connect '" target="_blank" class="action-pill-btn whatsapp-btn" title="WhatsApp">
+          <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 448 512"><path fill="currentColor" d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"></path></svg>
         </a>
+      </div>
+      <!-- Hamburger: mobile only -->
+      <button id="mobileMenuBtn" class="md:hidden cursor-pointer hamburger-pill" aria-label="Toggle menu">
+        <span class="mob-bar w-[18px] h-[2px] bg-current transition-all duration-300 origin-center block"></span>
+        <span class="mob-bar w-[18px] h-[2px] bg-current transition-all duration-300 origin-center block"></span>
+        <span class="mob-bar w-[18px] h-[2px] bg-current transition-all duration-300 origin-center block"></span>
+      </button>
     </div>
     </header>
+
+    <!-- Mobile Nav Dropdown -->
+    <nav id="mobileNavMenu" class="md:hidden mobile-nav-menu pointer-events-auto" aria-hidden="true">
+        <a href="#Works" class="mobile-nav-link">Projects</a>
+        <a href="#Journey" class="mobile-nav-link">Journey</a>
+        <a href="#WallOfProof" class="mobile-nav-link">Proof</a>
+        <a href="#Connect" class="mobile-nav-link">Contact</a>
+        <a href="./cv.html" class="mobile-nav-link mobile-cv-link">View CV</a>
+        <div class="mobile-nav-actions">
+            <a href="tel:9818549572" class="mobile-action-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                Call
+            </a>
+            <div id="themeToggleBtnMobile" class="mobile-action-btn cursor-pointer">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon theme-moon hidden"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sun theme-sun"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                Theme
+            </div>
+            <a href="https://wa.me/9818549572" target="_blank" class="mobile-action-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 448 512"><path fill="currentColor" d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"></path></svg>
+                WhatsApp
+            </a>
+        </div>
+    </nav>
 
 
     <div id="wrapper-canvas" class="absolute inset-0 hidden md:block pointer-events-none z-[-1]">
@@ -77,7 +113,7 @@
           
 
 
-       <ul class="w-7 ml-auto mr-8  space-y-4 text-[#b0b2c3] absolute right-4 ">
+       <ul class="w-7 ml-auto mr-8 space-y-4 text-[#b0b2c3] absolute right-4 hidden md:block">
             <li>
                 <a href="https://www.linkedin.com/in/ayush-garg34/" target="_blank">
                     <svg class="w-full hover:text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
@@ -218,8 +254,10 @@
           >
             <img
               class="max-w-[400px] w-full mr-auto relative z-10 drop-shadow-[0_0px_60px_rgba(59,130,246,0.6)]"
-              src="./assets/images/p11.png"
-              alt=""
+              src="./assets/images/p11.webp"
+              alt="TechBlog project screenshot"
+              loading="lazy"
+              decoding="async"
             />
 
             <!-- hover text -->
@@ -398,8 +436,10 @@
           >
             <img
               class="max-w-[400px] w-full relative z-10 drop-shadow-[0_0px_60px_rgba(59,130,246,0.6)]"
-              src="./assets/images/viboraProject.png"
-              alt=""
+              src="./assets/images/viboraProject.webp"
+              alt="Vibora project screenshot"
+              loading="lazy"
+              decoding="async"
             />
             <span
               class="flex group-hover:-top-14 ease-jump duration-200 text-black bg-[#ffe578] sm:absolute left-1/2 sm:-translate-x-1/2 top-5 px-2 py-1 text-sm sm:text-base mt-2 rounded w-max items-center gap-1 after:hidden sm:after:block after:w-4 after:h-4 after:bg-inherit after:absolute after:left-1/2 after:-translate-x-1/2 after:rotate-45 after:-bottom-2"
@@ -443,8 +483,10 @@
           >
             <img
               class="max-w-[400px] w-full mr-auto relative z-10 drop-shadow-[0_0px_60px_rgba(59,130,246,0.6)]"
-              src="./assets/images/eyesonic.png"
-              alt=""
+              src="./assets/images/eyesonic.webp"
+              alt="EyeSonic AI project screenshot"
+              loading="lazy"
+              decoding="async"
             />
 
             <!-- hover text -->
@@ -499,7 +541,7 @@
       and features an <span class="text-violet-400 font-bold">instant face training module</span> — 
       new faces can be registered and recognized on the fly. Presented at 
       <span class="text-white font-bold">CodeSphere 2026 Hackathon</span> among 50+ teams and secured 
-      <span class="text-violet-400 font-bold">Runner-Up 🏆 winning ₹12,000 cash prize</span>.
+      <span class="text-violet-400 font-bold">Runner-Up &#9733; winning &#8377;12,000 cash prize</span>.
     </p>
 
           <ul class="flex flex-wrap gap-2 mt-2">
@@ -632,7 +674,9 @@
             <img
               class="max-w-[400px] w-full mr-auto relative z-10 drop-shadow-[0_0px_60px_rgba(59,130,246,0.6)]"
               src="./assets/images/pioneer-digital.webp"
-              alt=""
+              alt="Pioneer Digital project screenshot"
+              loading="lazy"
+              decoding="async"
             />
             <span
               class="flex group-hover:-top-14 ease-jump duration-200 bg-[#fc815c] sm:absolute left-1/2 sm:-translate-x-1/2 top-5 px-2 py-1 text-sm sm:text-base mt-2 rounded w-max items-center gap-1 after:hidden sm:after:block after:w-4 after:h-4 after:bg-inherit after:absolute after:left-1/2 after:-translate-x-1/2 after:rotate-45 after:-bottom-2"
@@ -730,6 +774,65 @@
       ></div>
     </section>
 
+    <!-- Works Section Responsive Styles -->
+    <style>
+    /* ── Projects section: fix mobile layout ── */
+    @media (max-width: 640px) {
+      /* Remove absolute positioned timeline elements from flow */
+      #Works > div.flex.flex-col.sm\:flex-row > div.h-\[1px\],
+      #Works > div.flex.flex-col.sm\:flex-row > div.w-4.h-4.rounded-full {
+        display: none !important;
+      }
+
+      /* Full width project images */
+      #Works img[class*="max-w-\[400px\]"],
+      #Works video[class*="max-w-\[400px\]"] {
+        max-width: 100% !important;
+        width: 100% !important;
+      }
+
+      /* Project text heading sizing */
+      #Works h3.text-2xl.md\:text-4xl {
+        font-size: 1.4rem !important;
+      }
+
+      /* project tags */
+      #Works li[class*="border.rounded-\[50px\]"] {
+        font-size: 0.65rem !important;
+        padding: 2px 7px !important;
+      }
+
+      /* Stack project rows properly */
+      #Works > div.flex {
+        flex-direction: column !important;
+        gap: 1.25rem !important;
+        margin-top: 1.5rem !important;
+      }
+
+      /* Make all children full width */
+      #Works > div.flex > div.w-full,
+      #Works > div.flex > a.flex {
+        width: 100% !important;
+      }
+
+      /* Remove the order-1/order-2 on mobile to always show image first */
+      #Works .order-2.sm\:order-1 { order: 1 !important; }
+      #Works .order-1.sm\:order-2 { order: 2 !important; }
+
+      /* Section heading */
+      #Works h2.text-3xl {
+        font-size: 1.5rem !important;
+      }
+    }
+
+    @media (max-width: 480px) {
+      #Works {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+      }
+    }
+    </style>
+
 <!-- Video modal for eyesonic -->
 <div id="videoModal"
   class="fixed inset-0 hidden items-center justify-center bg-black/70 backdrop-blur-md z-50">
@@ -761,7 +864,7 @@
         </h2>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-5 auto-rows-[220px]">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-5 auto-rows-[220px] journey-grid">
         
         <!-- Featured: Teaching Experience (Large Bento) -->
         <div class="md:col-span-8 md:row-span-2 bento-card group relative overflow-hidden bg-[#111] border border-white/10 rounded-[32px] p-10 transition-all duration-700 [perspective:1200px]">
@@ -855,17 +958,116 @@
       </div>
     </section>
 
+    <!-- Journey Grid Responsive Styles -->
+    <style>
+    /* ── Journey grid: mobile first ── */
+    .journey-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      auto-rows: auto;
+    }
+
+    .journey-grid .bento-card {
+      min-height: 160px;
+    }
+
+    /* Tablet (md = 768px+) */
+    @media (min-width: 768px) {
+      .journey-grid {
+        grid-template-columns: repeat(12, 1fr);
+        auto-rows: 220px;
+      }
+
+      .journey-grid > div:nth-child(1) { /* Educator - large */
+        grid-column: span 8;
+        grid-row: span 2;
+        min-height: unset;
+      }
+      .journey-grid > div:nth-child(2) { /* Internship */
+        grid-column: span 4;
+        grid-row: span 1;
+        min-height: unset;
+      }
+      .journey-grid > div:nth-child(3) { /* Rank */
+        grid-column: span 4;
+        grid-row: span 1;
+        min-height: unset;
+      }
+      .journey-grid > div:nth-child(4) { /* Certification */
+        grid-column: span 6;
+        min-height: unset;
+      }
+      .journey-grid > div:nth-child(5) { /* Placement */
+        grid-column: span 3;
+        min-height: unset;
+      }
+      .journey-grid > div:nth-child(6) { /* Dept Rep */
+        grid-column: span 3;
+        min-height: unset;
+      }
+    }
+
+    /* Small mobile: ensure text doesn't overflow */
+    @media (max-width: 480px) {
+      .journey-grid .bento-card {
+        min-height: 140px;
+        padding: 1.25rem !important;
+      }
+
+      .journey-grid h3.text-3xl,
+      .journey-grid h3.md\:text-4xl {
+        font-size: 1.2rem !important;
+        line-height: 1.3 !important;
+      }
+
+      .journey-grid p.text-xl {
+        font-size: 0.85rem !important;
+      }
+
+      /* Rank number */
+      .journey-grid .text-5xl {
+        font-size: 2.8rem !important;
+      }
+
+      /* Icon containers */
+      .journey-grid .w-16.h-16 {
+        width: 44px !important;
+        height: 44px !important;
+        margin-bottom: 1rem !important;
+      }
+
+      .journey-grid .w-20.h-20 {
+        width: 48px !important;
+        height: 48px !important;
+      }
+    }
+
+    /* Disable 3D perspective effects on touch devices for perf */
+    @media (hover: none) {
+      .bento-card [class*="[transform-style:preserve-3d]"] {
+        transform-style: flat !important;
+      }
+      .bento-card [class*="group-hover:[transform"] {
+        transform: none !important;
+      }
+    }
+    </style>
+
     <!-- Bento Mouse Script -->
     <script>
-      document.querySelectorAll('.bento-card').forEach(card => {
-        card.addEventListener('mousemove', e => {
-          const rect = card.getBoundingClientRect();
-          const x = e.clientX - rect.left;
-          const y = e.clientY - rect.top;
-          card.style.setProperty('--x', `${x}px`);
-          card.style.setProperty('--y', `${y}px`);
+      // Only enable 3D hover on non-touch devices
+      if (window.matchMedia('(hover: hover)').matches) {
+        document.querySelectorAll('.bento-card').forEach(card => {
+          card.addEventListener('mousemove', e => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            card.style.setProperty('--x', `${x}px`);
+            card.style.setProperty('--y', `${y}px`);
+          });
         });
-      });
+      }
     </script>
 
 
@@ -900,7 +1102,7 @@
         <!-- ═══ CERTIFICATES FILMSTRIP ═══════════════════════════ -->
         <div class="section-label vault-reveal delay-1">
           <div class="label-line"></div>
-          <span>📜 Certificates</span>
+          <span>&#9998; Certificates</span>
           <div class="label-line"></div>
         </div>
 
@@ -1059,7 +1261,7 @@
             <div class="polaroid">
               <div class="tape"></div>
               <img class="polaroid-img" src="./assets/achivements/HackathonWin.jpg" alt="Hackathon Runner Up">
-              <span class="polaroid-badge award-badge">🏆 ₹12K Prize</span>
+              <span class="polaroid-badge award-badge">&#9733; &#8377;12K Prize</span>
               <div class="polaroid-caption">SGT Hackathon Runner-Up</div>
             </div>
           </div>
@@ -1096,21 +1298,7 @@
             </div>
           </div>
 
-          <!-- Card 6: Comviva Internship -->
-          <div class="hanging-unit" data-title="Trainee Engineer Internship" data-desc="3-month internship at Comviva, working on enterprise-level systems and securing a Pre-Placement Offer (PPO).">
-            <div class="thread-pin"></div>
-            <svg class="thread-svg" viewBox="0 0 50 90" height="90">
-              <path d="M25,0 C10,25 40,45 25,90"
-                stroke="url(#tg-cyan)" stroke-width="2" fill="none"
-                stroke-linecap="round"/>
-            </svg>
-            <div class="polaroid">
-              <div class="tape"></div>
-              <img class="polaroid-img" src="./assets/images/CV-Evidencer/Comviva.jpeg" alt="Comviva Internship">
-              <span class="polaroid-badge award-badge">PPO Secured</span>
-              <div class="polaroid-caption">Comviva Trainee</div>
-            </div>
-          </div>
+       
 
         </div>
 
@@ -1369,19 +1557,19 @@
               <div class="socials-row">
                 <a href="https://www.linkedin.com/in/ayush-garg34/" target="_blank" class="social-pill" title="LinkedIn">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 448 512" fill="currentColor"><path d="M100.3 448H7.4V148.9h92.9zM53.8 108.1C24.1 108.1 0 83.5 0 53.8a53.8 53.8 0 0 1 107.6 0c0 29.7-24.1 54.3-53.8 54.3zM447.9 448h-92.7V302.4c0-34.7-.7-79.2-48.3-79.2-48.3 0-55.7 37.7-55.7 76.7V448h-92.8V148.9h89.1v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3V448z"/></svg>
-                  in
+                  LinkedIn
                 </a>
                 <a href="https://github.com/Ayush-Garg-git" target="_blank" class="social-pill" title="GitHub">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 496 512" fill="currentColor"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8z"/></svg>
-                  gh
+                  GitHub
                 </a>
                 <a href="https://x.com/AyushGarg417248" target="_blank" class="social-pill" title="Twitter/X">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 512 512" fill="currentColor"><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg>
-                  x
+                  Twitter
                 </a>
                 <a href="https://wa.me/919818549572" target="_blank" class="social-pill social-pill-wa" title="WhatsApp">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 448 512" fill="currentColor"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
-                  wa
+                  WhatsApp
                 </a>
               </div>
             </div>
@@ -1689,12 +1877,89 @@
 
     /* Responsive */
     @media (max-width: 768px) {
-      .connect-card-wrapper { flex-direction: column; }
-      .connect-divider { width: 100%; height: 1px;
+      .connect-section {
+        padding: 36px 16px 48px;
+      }
+      .connect-title {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+      }
+      .connect-eyebrow {
+        font-size: 0.68rem;
+        margin-bottom: 8px;
+      }
+
+      /* Stack panels vertically */
+      .connect-card-wrapper {
+        flex-direction: column;
+        border-radius: 20px;
+      }
+      .connect-divider {
+        width: 100%;
+        height: 1px;
         background: linear-gradient(to right, transparent, rgba(21,149,182,0.3), transparent);
       }
-      .connect-panel { padding: 28px 20px; }
-      .connect-row { flex-direction: column; }
+      .connect-panel {
+        padding: 20px 16px;
+      }
+      .connect-panel-label {
+        margin-bottom: 14px;
+      }
+
+      /* Compact form */
+      .connect-form { gap: 10px; }
+      .connect-row { flex-direction: column; gap: 10px; }
+      .connect-field textarea { rows: 3; }
+      .connect-field input,
+      .connect-field textarea {
+        padding: 8px 11px;
+        font-size: 0.82rem;
+      }
+      .connect-send-btn {
+        padding: 10px 20px;
+        font-size: 0.82rem;
+      }
+
+      /* Info panel: show contact items in a row to save space */
+      .connect-info-list {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .connect-info-item {
+        flex: 1;
+        min-width: 130px;
+        gap: 8px;
+        align-items: center;
+      }
+      .connect-info-icon {
+        width: 32px; height: 32px;
+        border-radius: 8px;
+        flex-shrink: 0;
+      }
+      .info-label { font-size: 0.65rem; }
+      .info-value  { font-size: 0.78rem; }
+
+      /* Socials */
+      .connect-socials { gap: 8px; }
+      .socials-row { gap: 6px; }
+      .social-pill {
+        padding: 5px 10px;
+        font-size: 0.7rem;
+      }
+
+      /* Availability */
+      .connect-avail {
+        padding: 10px 12px;
+        gap: 10px;
+        margin-top: 8px;
+      }
+      .avail-title { font-size: 0.75rem; }
+      .avail-text  { font-size: 0.72rem; }
+
+      /* Hide ambient orbs on mobile (save paint) */
+      .connect-orb { display: none; }
     }
     </style>
 
@@ -1731,6 +1996,57 @@
   const themeToggleBtn = document.getElementById('themeToggleBtn');
   if(themeToggleBtn) {
     themeToggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('light-mode');
+    });
+  }
+</script>
+
+<script>
+  // Mobile hamburger menu
+  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  const mobileNavMenu = document.getElementById('mobileNavMenu');
+  const mobileBars    = mobileMenuBtn ? mobileMenuBtn.querySelectorAll('.mob-bar') : [];
+  let menuOpen = false;
+
+  function openMenu() {
+    menuOpen = true;
+    mobileNavMenu.classList.add('open');
+    mobileNavMenu.setAttribute('aria-hidden', 'false');
+    // Animate hamburger → X
+    if (mobileBars.length === 3) {
+      mobileBars[0].style.transform = 'translateY(7px) rotate(45deg)';
+      mobileBars[1].style.opacity  = '0';
+      mobileBars[2].style.transform = 'translateY(-7px) rotate(-45deg)';
+    }
+  }
+
+  function closeMenu() {
+    menuOpen = false;
+    mobileNavMenu.classList.remove('open');
+    mobileNavMenu.setAttribute('aria-hidden', 'true');
+    // Animate X → hamburger
+    if (mobileBars.length === 3) {
+      mobileBars[0].style.transform = '';
+      mobileBars[1].style.opacity  = '1';
+      mobileBars[2].style.transform = '';
+    }
+  }
+
+  if (mobileMenuBtn) {
+    mobileMenuBtn.addEventListener('click', () => menuOpen ? closeMenu() : openMenu());
+  }
+
+  // Close when a nav link is tapped
+  if (mobileNavMenu) {
+    mobileNavMenu.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+  }
+
+  // Mobile theme toggle mirrors desktop state
+  const mobileThemeBtn = document.getElementById('themeToggleBtnMobile');
+  if (mobileThemeBtn) {
+    mobileThemeBtn.addEventListener('click', () => {
       document.body.classList.toggle('light-mode');
     });
   }
@@ -1785,7 +2101,7 @@ document.addEventListener("keydown", (e) => {
     <footer id="particleFooter" style="position:relative;background:var(--particle-bg,#000);border-top:1px solid rgba(255,255,255,0.06);overflow:hidden;transition:background 0.3s;">
 
       <!-- eyebrow label -->
-      <div style="text-align:center;padding-top:56px;font-size:0.7rem;font-weight:800;letter-spacing:0.22em;text-transform:uppercase;color:#1595b6;font-family:inherit;">
+      <div style="text-align:center;padding-top:clamp(24px,5vw,56px);font-size:0.7rem;font-weight:800;letter-spacing:0.22em;text-transform:uppercase;color:#1595b6;font-family:inherit;">
         05 / CONTACT
       </div>
 
@@ -1801,7 +2117,7 @@ document.addEventListener("keydown", (e) => {
       </div>
 
       <!-- Sub-links row -->
-      <div style="display:flex;justify-content:center;gap:32px;padding:24px 16px 0;flex-wrap:wrap;">
+      <div style="display:flex;justify-content:center;gap:clamp(12px,4vw,32px);padding:16px 16px 0;flex-wrap:wrap;">
         <a href="mailto:ayushgarg3635@gmail.com" style="display:flex;align-items:center;gap:8px;color:#64748b;font-size:0.8rem;font-weight:600;text-decoration:none;letter-spacing:0.05em;transition:color .2s;" onmouseover="this.style.color='#1595b6'" onmouseout="this.style.color='#64748b'">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           ayushgarg3635@gmail.com
@@ -1839,7 +2155,7 @@ document.addEventListener("keydown", (e) => {
 
       /* ── config ── */
       const TEXT        = "LET'S CONNECT";
-      const FONT_SIZE   = 110;          // sampling font size
+      let   FONT_SIZE   = 110;          // dynamically set in resize()
       const DOT_RADIUS  = 2.2;
       const DOT_GAP     = 6;            // spacing of sampled grid
       const SCATTER_R   = 260;          // hover scatter radius
@@ -1911,53 +2227,113 @@ document.addEventListener("keydown", (e) => {
       /* ── Sample text pixels ── */
       function buildParticles() {
         particles = [];
-
-        // Off-screen canvas for sampling
-        const oc = document.createElement('canvas');
+        const colors = getColors();
+        const oc  = document.createElement('canvas');
         oc.width  = W;
         oc.height = H;
         const oc2 = oc.getContext('2d');
+        const fs  = Math.round(FONT_SIZE * ratio);
+        const fontStr = `900 ${fs}px 'Montserrat','Arial Black',sans-serif`;
 
-        oc2.clearRect(0, 0, W, H);
-        oc2.fillStyle = '#fff';
-        oc2.font = `900 ${Math.round(FONT_SIZE * ratio)}px 'Montserrat', 'Arial Black', sans-serif`;
-        oc2.textAlign    = 'center';
-        oc2.textBaseline = 'middle';
-        oc2.fillText(TEXT, W / 2, H / 2);
+        if (isMobileLayout) {
+          /* ── TWO-LINE layout for mobile ── */
+          const line1 = "LET'S";
+          const line2 = "CONNECT";
+          const lineH = H / 2;
 
-        const imgData = oc2.getImageData(0, 0, W, H).data;
-        const step = Math.round(DOT_GAP * ratio);
+          // Draw line 1 (white)
+          oc2.clearRect(0, 0, W, H);
+          oc2.fillStyle = '#fff';
+          oc2.font = fontStr;
+          oc2.textAlign = 'center';
+          oc2.textBaseline = 'middle';
+          oc2.fillText(line1, W / 2, lineH * 0.5);
 
-        // Find approx split point (word boundary) for two-tone colour
-        oc2.clearRect(0, 0, W, H);
-        oc2.font = `900 ${Math.round(FONT_SIZE * ratio)}px 'Montserrat', 'Arial Black', sans-serif`;
-        oc2.textAlign = 'left';
-        oc2.textBaseline = 'middle';
-        const word1 = "LET'S ";
-        const splitX = W / 2 - oc2.measureText(TEXT).width / 2 + oc2.measureText(word1).width;
+          const d1 = oc2.getImageData(0, 0, W, H).data;
+          const step = Math.round(DOT_GAP * ratio);
+          for (let y = 0; y < H; y += step)
+            for (let x = 0; x < W; x += step)
+              if (d1[(y * W + x) * 4 + 3] > 128)
+                particles.push(new Particle(x, y, colors.w1));
 
-        const colors = getColors();
-        for (let y = 0; y < H; y += step) {
-          for (let x = 0; x < W; x += step) {
-            const idx = (y * W + x) * 4;
-            if (imgData[idx + 3] > 128) {
-              const col = x < splitX ? colors.w1 : colors.w2;
-              particles.push(new Particle(x, y, col));
-            }
-          }
+          // Draw line 2 (accent)
+          oc2.clearRect(0, 0, W, H);
+          oc2.fillStyle = '#fff';
+          oc2.font = fontStr;
+          oc2.textAlign = 'center';
+          oc2.textBaseline = 'middle';
+          oc2.fillText(line2, W / 2, lineH * 1.5);
+
+          const d2 = oc2.getImageData(0, 0, W, H).data;
+          for (let y = 0; y < H; y += step)
+            for (let x = 0; x < W; x += step)
+              if (d2[(y * W + x) * 4 + 3] > 128)
+                particles.push(new Particle(x, y, colors.w2));
+
+        } else {
+          /* ── SINGLE-LINE layout for desktop ── */
+          oc2.clearRect(0, 0, W, H);
+          oc2.fillStyle = '#fff';
+          oc2.font = fontStr;
+          oc2.textAlign    = 'center';
+          oc2.textBaseline = 'middle';
+          oc2.fillText(TEXT, W / 2, H / 2);
+
+          const imgData = oc2.getImageData(0, 0, W, H).data;
+          const step = Math.round(DOT_GAP * ratio);
+
+          // Split point for two-tone colour
+          oc2.textAlign = 'left';
+          const splitX = W / 2 - oc2.measureText(TEXT).width / 2 + oc2.measureText("LET'S ").width;
+
+          for (let y = 0; y < H; y += step)
+            for (let x = 0; x < W; x += step)
+              if (imgData[(y * W + x) * 4 + 3] > 128)
+                particles.push(new Particle(x, y, x < splitX ? colors.w1 : colors.w2));
         }
       }
 
       /* ── Resize ── */
+      let isMobileLayout = false;
       function resize() {
         ratio  = window.devicePixelRatio || 1;
         const wrapW = wrapper.offsetWidth;
-        const rawH  = Math.round(Math.min(wrapW * 0.28, 220));
-        W = Math.round(wrapW * ratio);
-        H = Math.round(rawH  * ratio);
-        canvas.width  = W;
-        canvas.height = H;
-        canvas.style.height = rawH + 'px';
+        isMobileLayout = wrapW < 600;
+
+        if (isMobileLayout) {
+          // Auto-fit font: find largest size where "CONNECT" (longer word) fits in 88% of width
+          const testCtx = document.createElement('canvas').getContext('2d');
+          let fs = 80;
+          while (fs > 16) {
+            testCtx.font = `900 ${Math.round(fs * ratio)}px 'Montserrat','Arial Black',sans-serif`;
+            if (testCtx.measureText("CONNECT").width <= wrapW * ratio * 0.88) break;
+            fs -= 2;
+          }
+          FONT_SIZE = fs;
+          // Height: two lines + padding
+          const rawH = Math.round(fs * 2.6);
+          W = Math.round(wrapW * ratio);
+          H = Math.round(rawH * ratio);
+          canvas.width  = W;
+          canvas.height = H;
+          canvas.style.height = rawH + 'px';
+        } else {
+          // Desktop: auto-fit to 85% width
+          const testCtx = document.createElement('canvas').getContext('2d');
+          let fs = 130;
+          while (fs > 20) {
+            testCtx.font = `900 ${Math.round(fs * ratio)}px 'Montserrat','Arial Black',sans-serif`;
+            if (testCtx.measureText(TEXT).width <= wrapW * ratio * 0.85) break;
+            fs -= 2;
+          }
+          FONT_SIZE = fs;
+          const rawH = Math.round(Math.min(wrapW * 0.28, 220));
+          W = Math.round(wrapW * ratio);
+          H = Math.round(rawH * ratio);
+          canvas.width  = W;
+          canvas.height = H;
+          canvas.style.height = rawH + 'px';
+        }
         buildParticles();
       }
 

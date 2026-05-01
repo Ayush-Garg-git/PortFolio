@@ -1,10 +1,13 @@
 /* src/nav.css: Elegant, Minimalist Navigation */
 
-.nav-container {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-  pointer-events: auto;
+/* Desktop only: show nav as flex */
+@media (min-width: 768px) {
+  .nav-container {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    pointer-events: auto;
+  }
 }
 
 .realistic-btn {
@@ -65,3 +68,239 @@
   box-shadow: 0 4px 15px rgba(21, 149, 182, 0.3);
   transform: translateY(-2px);
 }
+
+/* ── Header Action Buttons ── */
+.header-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #a1a1aa;
+  text-decoration: none;
+  transition: color 0.25s ease, background 0.25s ease, border-color 0.25s ease,
+              transform 0.2s ease, box-shadow 0.25s ease;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.header-action-btn:hover {
+  color: #ffffff;
+  background: rgba(21, 149, 182, 0.12);
+  border-color: rgba(21, 149, 182, 0.5);
+  box-shadow: 0 0 14px rgba(21, 149, 182, 0.25);
+  transform: translateY(-2px);
+}
+
+/* WhatsApp gets a subtle green accent on hover */
+.header-action-btn:has(.fa-whatsapp):hover {
+  background: rgba(37, 211, 102, 0.1);
+  border-color: rgba(37, 211, 102, 0.4);
+  box-shadow: 0 0 14px rgba(37, 211, 102, 0.2);
+  color: #25d366;
+}
+
+/* Hamburger btn is slightly wider for the 3 bars */
+.hamburger-btn {
+  width: 42px;
+  gap: 5px;
+}
+
+/* Light mode */
+body.light-mode .header-action-btn {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #555;
+}
+body.light-mode .header-action-btn:hover {
+  color: #111;
+  background: rgba(21, 149, 182, 0.08);
+  border-color: rgba(21, 149, 182, 0.4);
+}
+body.light-mode .mob-bar { background-color: #333 !important; }
+
+/* ── Header Action Pill Dock ── */
+.action-pill {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50px;
+  padding: 4px;
+  gap: 0;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.06);
+}
+
+.action-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50px;
+  color: #888;
+  text-decoration: none;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.action-pill-btn:hover {
+  color: #fff;
+  background: rgba(21, 149, 182, 0.15);
+}
+
+.whatsapp-btn:hover {
+  color: #25d366;
+  background: rgba(37, 211, 102, 0.1);
+}
+
+.action-pill-divider {
+  width: 1px;
+  height: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+  margin: 0 2px;
+}
+
+/* Hamburger uses same pill style but standalone */
+.hamburger-pill {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 42px;
+  height: 42px;
+  color: #888;
+  transition: color 0.2s;
+}
+.hamburger-pill:hover { color: #fff; }
+
+/* Light mode overrides */
+body.light-mode .action-pill {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+body.light-mode .action-pill-btn { color: #666; }
+body.light-mode .action-pill-btn:hover { color: #111; background: rgba(21,149,182,0.08); }
+body.light-mode .action-pill-divider { background: rgba(0,0,0,0.1); }
+body.light-mode .hamburger-pill { color: #555; }
+body.light-mode .mob-bar { background-color: #333 !important; }
+
+/* ── Mobile Navigation ── */
+
+/* Hamburger bars – solid color fallback */
+.mob-bar {
+  background-color: #ffffff;
+}
+body.light-mode .mob-bar {
+  background-color: #111 !important;
+}
+
+/* Slide-down mobile nav */
+.mobile-nav-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(8, 8, 12, 0.97);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(21, 149, 182, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80px 24px 32px;
+  gap: 8px;
+  z-index: 40;
+  transform: translateY(-110%);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-nav-menu.open {
+  transform: translateY(0);
+}
+
+.mobile-nav-link {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 14px 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #a1a1aa;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.mobile-nav-link:hover,
+.mobile-nav-link:active {
+  color: #fff;
+  background: rgba(21, 149, 182, 0.08);
+}
+
+.mobile-nav-link.mobile-cv-link {
+  color: #1595b6;
+  border: 1px solid rgba(21, 149, 182, 0.4);
+  margin-top: 4px;
+  border-radius: 50px;
+}
+
+.mobile-nav-link.mobile-cv-link:hover {
+  background: rgba(21, 149, 182, 0.1);
+  border-color: rgba(21, 149, 182, 0.7);
+  color: #67e8f9;
+}
+
+.mobile-nav-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  width: 100%;
+  justify-content: center;
+}
+
+.mobile-action-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 10px 16px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #a1a1aa;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+  cursor: pointer;
+  background: transparent;
+}
+
+.mobile-action-btn:hover {
+  color: #fff;
+  border-color: rgba(21, 149, 182, 0.4);
+  background: rgba(21, 149, 182, 0.06);
+}
+
+/* Light mode overrides */
+body.light-mode .mobile-nav-menu {
+  background: rgba(245, 245, 250, 0.97);
+  border-bottom-color: rgba(21, 149, 182, 0.2);
+}
+body.light-mode .mobile-nav-link { color: #444; }
+body.light-mode .mobile-nav-link:hover { color: #111; }
+body.light-mode .mobile-action-btn { color: #555; border-color: rgba(0,0,0,0.1); }
+body.light-mode .mobile-action-btn:hover { color: #111; }

@@ -1,0 +1,635 @@
+/* ================================================================
+   RESPONSIVE.CSS — Complete Mobile & Tablet Responsiveness
+   Covers: 320px, 375px, 480px, 600px, 768px, 1024px breakpoints
+   ================================================================ */
+
+/* ── Global box-sizing & overflow prevention ─────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+/* ── Ensure images never overflow ───────────────────────────────  */
+img, video, canvas, svg {
+  max-width: 100%;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   HERO SECTION
+   ═══════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  /* Hero section */
+  section:first-of-type {
+    min-height: 100svh;
+    padding-bottom: 60px;
+  }
+
+  /* Scale down the hero background SVG */
+  section:first-of-type > div:first-child .max-w-1400 svg.pointer-events-none {
+    width: 220px !important;
+    transform: translateY(-80px) translateX(20%) !important;
+  }
+
+  /* Hero text area */
+  section:first-of-type .relative.ml-6 {
+    margin-left: 1rem !important;
+    margin-right: 1rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  section:first-of-type {
+    min-height: 100svh;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   PROJECTS / WORKS SECTION
+   ═══════════════════════════════════════════════════════════════ */
+#Works {
+  overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+  #Works {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* Project layout — stack vertically */
+  #Works > div.flex {
+    flex-direction: column !important;
+    gap: 1.5rem !important;
+    margin-top: 2rem !important;
+  }
+
+  /* Remove the horizontal timeline line on mobile */
+  #Works .h-\[1px\] {
+    display: none !important;
+  }
+
+  /* Remove the center timeline dot on mobile */
+  #Works .w-4.h-4.rounded-full {
+    display: none !important;
+  }
+
+  /* Remove the vertical center line */
+  #Works .w-\[2px\] {
+    display: none !important;
+  }
+
+  /* Project images */
+  #Works img.max-w-\[400px\] {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  /* Remove sm:order classes effect — always show img first on mobile */
+  #Works .order-1,
+  #Works .order-2 {
+    order: unset !important;
+  }
+
+  /* Video project */
+  #Works video.max-w-\[400px\] {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  /* Tags wrapping */
+  #Works ul.flex.flex-wrap {
+    gap: 6px !important;
+  }
+
+  #Works ul.flex.flex-wrap li {
+    font-size: 0.7rem !important;
+    padding: 3px 8px !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   JOURNEY / BENTO SECTION
+   ═══════════════════════════════════════════════════════════════ */
+#Journey {
+  overflow-x: hidden;
+}
+
+@media (max-width: 1024px) {
+  #Journey .grid {
+    grid-template-columns: 1fr 1fr !important;
+    auto-rows: unset !important;
+  }
+
+  /* Make large card span full width on tablet */
+  #Journey .md\:col-span-8 {
+    grid-column: span 2 !important;
+  }
+
+  #Journey .md\:row-span-2 {
+    grid-row: span 1 !important;
+  }
+}
+
+@media (max-width: 768px) {
+  #Journey {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 3rem;
+  }
+
+  #Journey .text-center.mb-20 {
+    margin-bottom: 2rem !important;
+  }
+
+  #Journey h2 {
+    font-size: 2rem !important;
+  }
+
+  /* Stack all bento cards to single column */
+  #Journey .grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+    auto-rows: auto !important;
+  }
+
+  #Journey .md\:col-span-8,
+  #Journey .md\:col-span-4,
+  #Journey .md\:col-span-6,
+  #Journey .md\:col-span-3 {
+    grid-column: span 1 !important;
+  }
+
+  #Journey .md\:row-span-2,
+  #Journey .md\:row-span-1 {
+    grid-row: span 1 !important;
+  }
+
+  /* Bento card sizes */
+  .bento-card {
+    min-height: 160px !important;
+  }
+
+  /* Large educator card */
+  #Journey .md\:col-span-8.md\:row-span-2 {
+    min-height: 200px !important;
+  }
+
+  /* Rank card */
+  #Journey .text-5xl {
+    font-size: 3rem !important;
+  }
+
+  #Journey .md\:text-7xl {
+    font-size: 3.5rem !important;
+  }
+
+  /* Card text sizes */
+  #Journey h3.text-3xl {
+    font-size: 1.5rem !important;
+  }
+
+  #Journey h3.text-4xl,
+  #Journey h3.md\:text-4xl {
+    font-size: 1.4rem !important;
+  }
+
+  #Journey p.text-xl {
+    font-size: 0.9rem !important;
+  }
+
+  /* Disable complex 3D transforms on mobile for performance */
+  #Journey .bento-card [class*="group-hover:\[transform:rotate"] {
+    transform: none !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   WALL OF PROOF SECTION
+   ═══════════════════════════════════════════════════════════════ */
+#WallOfProof {
+  overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+  .proof-vault {
+    padding: 60px 0 60px !important;
+  }
+
+  .proof-scene {
+    padding: 0 16px !important;
+  }
+
+  /* Filmstrip certificates — allow horizontal scroll gracefully */
+  .cert-filmstrip {
+    margin-bottom: 40px !important;
+  }
+
+  .cert-track-wrapper {
+    margin: 0 -16px !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    overflow: hidden !important;
+  }
+
+  .holo-card {
+    width: 260px !important;
+    height: 185px !important;
+  }
+
+  /* Polaroid gallery — stack horizontally with scroll */
+  .hanging-line {
+    display: none !important;
+  }
+
+  .polaroid-board {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 16px !important;
+    justify-items: center !important;
+    perspective: none !important;
+  }
+
+  .hanging-unit {
+    animation: none !important;
+    transform: none !important;
+    width: 100% !important;
+    max-width: 180px !important;
+  }
+
+  /* Hide the SVG threads on mobile */
+  .thread-svg {
+    display: none !important;
+  }
+
+  .thread-pin {
+    display: none !important;
+  }
+
+  .polaroid {
+    width: 100% !important;
+    transform: none !important;
+    padding: 8px 8px 40px !important;
+  }
+
+  .polaroid-caption {
+    font-size: 12px !important;
+    bottom: 8px !important;
+    left: 8px !important;
+    right: 8px !important;
+  }
+
+  /* Disable 3D hover transforms on mobile */
+  .polaroid-board::before {
+    display: none !important;
+  }
+
+  /* Lightbox nav arrows */
+  .vault-lb-prev { left: 4px !important; }
+  .vault-lb-next { right: 4px !important; }
+
+  .vault-lightbox-inner {
+    max-width: 95vw !important;
+    max-height: 90vh !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .polaroid-board {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+  }
+
+  .hanging-unit {
+    max-width: 150px !important;
+  }
+
+  .holo-card {
+    width: 230px !important;
+    height: 163px !important;
+  }
+
+  .vault-title {
+    font-size: 2rem !important;
+  }
+
+  .vault-subtitle {
+    font-size: 0.9rem !important;
+    margin-bottom: 24px !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   CONNECT SECTION (already has some responsiveness, enhance it)
+   ═══════════════════════════════════════════════════════════════ */
+#Connect {
+  overflow-x: hidden;
+}
+
+@media (max-width: 480px) {
+  .connect-section {
+    padding: 24px 12px 40px !important;
+  }
+
+  .connect-card-wrapper {
+    border-radius: 16px !important;
+  }
+
+  .connect-panel {
+    padding: 16px 14px !important;
+  }
+
+  .connect-title {
+    font-size: 1.6rem !important;
+  }
+
+  .socials-row {
+    justify-content: flex-start !important;
+    flex-wrap: wrap !important;
+  }
+
+  .social-pill {
+    font-size: 0.65rem !important;
+    padding: 4px 8px !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   FOOTER PARTICLE CANVAS
+   ═══════════════════════════════════════════════════════════════ */
+#particleFooter {
+  overflow-x: hidden;
+}
+
+@media (max-width: 480px) {
+  #particleFooter > div:first-child {
+    padding-top: 20px !important;
+    font-size: 0.6rem !important;
+  }
+
+  /* Sub-links row */
+  #particleFooter > div:nth-child(3) {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 8px !important;
+    padding: 12px 12px 0 !important;
+  }
+
+  #particleFooter a {
+    font-size: 0.7rem !important;
+  }
+
+  #particleFooter > div:last-child {
+    font-size: 0.65rem !important;
+    padding: 14px 12px 20px !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ABOUT MODAL RESPONSIVENESS
+   ═══════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .modal-content.modal-flex {
+    flex-direction: column !important;
+    max-height: 90vh !important;
+    overflow-y: auto !important;
+    max-width: 95vw !important;
+  }
+
+  .modal-right {
+    display: none !important;
+  }
+
+  .modal-left {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .about-title {
+    font-size: 1.5rem !important;
+  }
+
+  .stack {
+    gap: 8px !important;
+    flex-wrap: wrap !important;
+  }
+
+  .tech {
+    font-size: 0.8rem !important;
+    padding: 4px 8px !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   MATTER.JS CANVAS — Hide on Mobile (performance + visual fix)
+   ═══════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  #wrapper-canvas {
+    display: none !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   BENTO CARD — IMAGE PLACEHOLDER SPACE
+   For experience cube / journey section image placeholders
+   ═══════════════════════════════════════════════════════════════ */
+.bento-img-placeholder {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: linear-gradient(
+    135deg,
+    rgba(21, 149, 182, 0.08) 0%,
+    rgba(99, 102, 241, 0.06) 50%,
+    rgba(21, 149, 182, 0.04) 100%
+  );
+  border: 1px dashed rgba(21, 149, 182, 0.25);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: rgba(21, 149, 182, 0.5);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.bento-img-placeholder:hover {
+  border-color: rgba(21, 149, 182, 0.5);
+  background: rgba(21, 149, 182, 0.1);
+}
+
+.bento-img-placeholder svg {
+  width: 32px;
+  height: 32px;
+  opacity: 0.5;
+}
+
+/* ── Project image placeholder (for future images in works section) ── */
+.project-img-placeholder {
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 16 / 10;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.03) 0%,
+    rgba(21, 149, 182, 0.07) 50%,
+    rgba(255, 255, 255, 0.02) 100%
+  );
+  border: 1.5px dashed rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: rgba(255, 255, 255, 0.2);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-img-placeholder::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 50%, rgba(21,149,182,0.06), transparent 60%);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   HORIZONTAL SCROLL PREVENTION — Global
+   ═══════════════════════════════════════════════════════════════ */
+section {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   VIDEO MODAL — Mobile
+   ═══════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  #videoModal > div {
+    padding: 8px !important;
+    max-width: 95vw !important;
+  }
+
+  #videoModal video {
+    border-radius: 10px !important;
+  }
+
+  #closeVideo {
+    top: -8px !important;
+    right: 0 !important;
+    font-size: 1rem !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   TABLET BREAKPOINT (768px - 1024px)
+   ═══════════════════════════════════════════════════════════════ */
+@media (min-width: 768px) and (max-width: 1024px) {
+  #Journey .grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    auto-rows: auto !important;
+  }
+
+  /* Ensure the large card spans full 2 cols */
+  #Journey .md\:col-span-8 {
+    grid-column: span 2 !important;
+  }
+
+  #Journey .md\:col-span-4 {
+    grid-column: span 1 !important;
+  }
+
+  #Journey .md\:col-span-6 {
+    grid-column: span 1 !important;
+  }
+
+  #Journey .md\:col-span-3 {
+    grid-column: span 1 !important;
+  }
+
+  .polaroid-board {
+    gap: 16px !important;
+  }
+
+  .polaroid {
+    width: 185px !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SMALL PHONE (320px - 375px)
+   ═══════════════════════════════════════════════════════════════ */
+@media (max-width: 375px) {
+  #Journey h2 {
+    font-size: 1.6rem !important;
+  }
+
+  .bento-card {
+    padding: 1.25rem !important;
+  }
+
+  #Journey .md\:col-span-8 h3 {
+    font-size: 1.2rem !important;
+  }
+
+  .vault-title {
+    font-size: 1.8rem !important;
+  }
+
+  .polaroid-board {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .hanging-unit {
+    max-width: 140px !important;
+  }
+
+  .holo-card {
+    width: 200px !important;
+    height: 142px !important;
+  }
+
+  .connect-title {
+    font-size: 1.4rem !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   LIGHT MODE ADJUSTMENTS FOR RESPONSIVE
+   ═══════════════════════════════════════════════════════════════ */
+body.light-mode .bento-img-placeholder {
+  background: linear-gradient(
+    135deg,
+    rgba(21, 149, 182, 0.05) 0%,
+    rgba(99, 102, 241, 0.04) 50%,
+    rgba(21, 149, 182, 0.03) 100%
+  );
+  border-color: rgba(21, 149, 182, 0.2);
+  color: rgba(21, 149, 182, 0.4);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SAFE AREA SUPPORT (iPhone notch, etc.)
+   ═══════════════════════════════════════════════════════════════ */
+@supports (padding: env(safe-area-inset-left)) {
+  header {
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
+  }
+
+  footer {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+}

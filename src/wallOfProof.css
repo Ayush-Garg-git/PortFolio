@@ -9,6 +9,7 @@
   position: relative;
   padding: 120px 0 140px;
   overflow: hidden;
+  overflow-x: hidden;
   background: #030305;
   isolation: isolate;
 }
@@ -184,7 +185,8 @@
   margin: 0 -24px;
   padding-left: 24px;
   padding-right: 24px;
-  /* Allow horizontal scrolling */
+  /* Contain overflow so it doesn't cause page horizontal scroll */
+  max-width: 100vw;
   cursor: grab;
 }
 
@@ -905,47 +907,141 @@
   }
   
   .holo-card {
-    width: 280px;
-    height: 200px;
-  }
-  
-  .polaroid-board {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-    min-height: auto;
-  }
-  
-  .polaroid {
-    width: 100%;
-    max-width: 200px;
+    width: 260px;
+    height: 185px;
   }
 
-  .polaroid:nth-child(1),
-  .polaroid:nth-child(2),
-  .polaroid:nth-child(3),
-  .polaroid:nth-child(4),
-  .polaroid:nth-child(5) {
-    transform: rotate(0deg) translateY(0px);
+  /* Disable scene-level 3D tracking on mobile */
+  .proof-scene {
+    transform: none !important;
+    transition: none !important;
   }
-  
+
+  /* Hide clothes-line */
+  .hanging-line {
+    display: none;
+  }
+
+  /* Polaroid board: 2-column grid instead of flex row */
+  .polaroid-board {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    justify-items: center;
+    perspective: none;
+    padding-top: 16px;
+  }
+
+  /* Each hanging unit: remove sway animation, normalize */
+  .hanging-unit {
+    animation: none !important;
+    transform: none !important;
+    width: 100%;
+    max-width: 180px;
+    flex-direction: column;
+  }
+
+  /* Hide SVG threads and pins */
+  .thread-svg,
+  .thread-pin {
+    display: none;
+  }
+
+  /* Polaroid card: reset transform, make responsive */
+  .polaroid {
+    width: 100%;
+    transform: none !important;
+    padding: 8px 8px 40px;
+  }
+
+  /* Override nth-child static rots */
+  .hanging-unit:nth-child(1) .polaroid,
+  .hanging-unit:nth-child(2) .polaroid,
+  .hanging-unit:nth-child(3) .polaroid,
+  .hanging-unit:nth-child(4) .polaroid,
+  .hanging-unit:nth-child(5) .polaroid {
+    --static-rot: 0deg;
+    transform: none !important;
+  }
+
+  /* Dim overlay on polaroid hover — disable on mobile */
+  .polaroid-board::before {
+    display: none;
+  }
+
+  .polaroid-caption {
+    font-size: 12px;
+    bottom: 8px;
+    left: 8px;
+    right: 8px;
+  }
+
+  .polaroid-badge {
+    font-size: 7px;
+    padding: 2px 7px;
+  }
+
   .vault-3d-objects {
     display: none;
   }
   
   .vault-lb-prev { left: 8px; }
   .vault-lb-next { right: 8px; }
+
+  .vault-lb-prev,
+  .vault-lb-next {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+
+  .vault-lightbox-inner {
+    max-width: 95vw;
+    max-height: 88vh;
+  }
 }
 
 @media (max-width: 480px) {
   .polaroid-board {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
   }
   
-  .polaroid {
-    max-width: 260px;
+  .hanging-unit {
+    max-width: 150px;
   }
 
   .cert-track {
     gap: 20px;
+  }
+
+  .holo-card {
+    width: 220px;
+    height: 156px;
+  }
+
+  .vault-title {
+    font-size: 1.9rem;
+  }
+
+  .vault-eyebrow {
+    font-size: 10px;
+    padding: 6px 16px;
+  }
+}
+
+@media (max-width: 375px) {
+  .polaroid-board {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+  }
+
+  .hanging-unit {
+    max-width: 135px;
+  }
+
+  .holo-card {
+    width: 190px;
+    height: 135px;
   }
 }
