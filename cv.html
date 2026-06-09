@@ -1033,10 +1033,19 @@
     .holo-card, .c-card-inner, .cv-nav, .grid-bg { transition: all 0.4s ease; }
 
     /* Responsive */
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
       .cv-nav { padding: 0 16px; }
-      .hero-title { transform: none; }
+      .nav-actions { display: flex; align-items: center; gap: 6px; }
+      .nav-icon-btn:not(#cvThemeToggle) { display: none; } /* Hide social icons on small screens */
+      .nav-back { padding: 6px; font-size: 0; } /* Hide "Back" text */
+      .nav-back svg { margin: 0; }
+      .nav-download { padding: 8px 12px; gap: 0; }
       .nav-download span.label { display: none; }
+      .hero-title { transform: none; }
+    }
+    @media (max-width: 380px) {
+      .cv-nav-logo span { font-size: 0.8rem; }
+      .nav-download { padding: 6px 10px; }
     }
   </style>
   <!-- GSAP -->
