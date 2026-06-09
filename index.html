@@ -19,7 +19,7 @@
 </head>
 <body class="bg-[#000000] text-white font-['nunito'] overflow-x-hidden">
     <section class="flex flex-col justify-between h-screen relative">
-    <header class="z-10 pointer-events-none flex items-center justify-between w-full max-w-1400 mt-6 sm:mt-8 mx-auto px-4 sm:px-6">
+    <header class="relative z-50 pointer-events-none flex items-center justify-between w-full max-w-1400 mt-6 sm:mt-8 mx-auto px-4 sm:px-6">
       <svg width="70"  height="70" viewBox="0 0 406 368" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M314.516 203.174L314.516 349.104L162.117 208.727M314.516 203.174L282.653 203.26M314.516 203.174L337.498 203.26L380.617 170.782L314.516 170.782M162.117 208.727L117.661 170.634L157.117 170.782M162.117 208.727L65.1165 301.139L20.176 301.139L137.099 188.83M200.117 170.782L282.653 96.1739L282.653 170.782M200.117 170.782L282.653 170.782M200.117 170.782L157.117 170.782M282.653 203.26L210.462 202.796L282.653 270.76L282.653 203.26ZM282.653 170.782L314.516 170.782M157.117 170.782L315.751 20.1061L314.516 170.782" stroke="white" stroke-width="10"/>
       </svg>
@@ -37,6 +37,13 @@
 
     <!-- Header Action Pill -->
     <div class="flex items-center gap-3 pointer-events-auto z-50">
+      <a href="./cv.html" class="relative inline-flex items-center justify-center px-3 py-1.5 text-[11px] font-bold text-white uppercase tracking-widest transition-all duration-300 bg-[rgba(21,149,182,0.1)] border border-[rgba(21,149,182,0.5)] rounded-full backdrop-blur-md hover:bg-[rgba(21,149,182,0.25)] hover:border-[#4595eb] shadow-[0_0_10px_rgba(21,149,182,0.4)] hover:shadow-[0_0_20px_rgba(69,149,235,0.8)] hover:-translate-y-0.5 md:hidden group overflow-hidden">
+        <span class="absolute inset-0 w-full h-full -ml-[-100%] transition-all duration-500 ease-out bg-gradient-to-r from-transparent via-[rgba(255,255,255,0.3)] to-transparent group-hover:ml-[100%] z-0"></span>
+        <span class="relative z-10 flex items-center gap-1.5">
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+          CV
+        </span>
+      </a>
       <!-- Pill dock grouping all 3 actions -->
       <div class="action-pill">
         <a href="tel:9818549572" class="action-pill-btn" title="Call">
@@ -53,8 +60,8 @@
         </a>
       </div>
       <!-- Hamburger: mobile only -->
-      <button id="mobileMenuBtn" class="md:hidden cursor-pointer" aria-label="Toggle menu" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: rgba(21, 149, 182, 0.1); border: 1px solid rgba(21, 149, 182, 0.3); border-radius: 12px; color: #1595b6; transition: all 0.3s ease;">
-        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      <button id="mobileMenuBtn" class="md:hidden cursor-pointer relative" aria-label="Toggle menu" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: rgba(21, 149, 182, 0.1); border: 1px solid rgba(21, 149, 182, 0.3); border-radius: 12px; color: #1595b6; transition: all 0.3s ease;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
       </button>
     </div>
     </header>
@@ -65,7 +72,6 @@
         <a href="#Journey" class="mobile-nav-link">Journey</a>
         <a href="#WallOfProof" class="mobile-nav-link">Proof</a>
         <a href="#Connect" class="mobile-nav-link">Contact</a>
-        <a href="./cv.html" class="mobile-nav-link mobile-cv-link">View CV</a>
         <div class="mobile-nav-actions">
             <a href="tel:9818549572" class="mobile-action-btn">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
@@ -88,34 +94,33 @@
           
     </div>
 
-    <div class="flex -mt-10 relative ">
-        <div class="max-w-1400 mx-auto w-full -mt-10 relative">
-            <div class="relative ml-6 sm:ml-28 mt-24 sm:mt-5 flex items-center sm:block text-left">
-                <!-- Hero Background Geometric SVG inline on mobile, absolute on desktop -->
-                <svg id="heroBackgroundSvg" class="pointer-events-none shrink-0" viewBox="0 0 406 368" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M314.899 203.5L314.899 349.43L162.5 209.053M314.899 203.5L283.037 203.586M314.899 203.5L337.881 203.586L381 171.109L314.899 171.109M162.5 209.053L118.044 170.96L157.5 171.109M162.5 209.053L65.5 301.465L20.5595 301.465L137.482 189.156M200.5 171.109L283.037 96.5L283.037 171.109M200.5 171.109L283.037 171.109M200.5 171.109L157.5 171.109M283.037 203.586L210.846 203.123L283.037 271.086L283.037 203.586ZM283.037 171.109L314.899 171.109M157.5 171.109L316.135 20.4322L314.899 171.109" stroke="#1F2667" stroke-opacity="0.9" stroke-width="10"/>
-                    <path d="M314.899 203.5L314.899 349.43L162.5 209.053M314.899 203.5L283.037 203.586M314.899 203.5L337.881 203.586L381 171.109L314.899 171.109M162.5 209.053L118.044 170.96L157.5 171.109M162.5 209.053L65.5 301.465L20.5595 301.465L137.482 189.156M200.5 171.109L283.037 96.5L283.037 171.109M200.5 171.109L283.037 171.109M200.5 171.109L157.5 171.109M283.037 203.586L210.846 203.123L283.037 271.086L283.037 203.586ZM283.037 171.109L314.899 171.109M157.5 171.109L316.135 20.4322L314.899 171.109" stroke="url(#paint0_linear)" stroke-width="10"/>
-                    <defs>
-                        <linearGradient id="paint0_linear" x1="205.549" y1="20.0169" x2="204.338" y2="342.461" gradientUnits="userSpaceOnUse">
-                        <stop stop-color="#1595B6"/>
-                        <stop offset="1" stop-color="#1595B6" stop-opacity="0"/>
-                        </linearGradient>
-                    </defs>
-                </svg>
-
-                <div>
-                    <h1 class="pointer-events-none text-[38px] sm:text-[48px] md:text-[64px] font-['Montserrat'] font-semibold mr-4 sm:mr-20">Ayush Garg</h1>
-                    <p class="pointer-events-none text-[16px] sm:text-lg font-['merriweather'] italic mb-8 mt-2 sm:mt-4">Java Full Stack Developer</p>
-                    <button id="aboutBtn" class="bg-[#4595eb] relative text-[16px] sm:text-[18px] py-2 px-5 rounded font-extrabold bg-gradient-to-l from-[#1595b6] to-[hsla(234,54%,26%,1)] hover:scale-110 ease-in-out duration-100 group aboutBtn">About me <svg xmlns="http://www.w3.org/2000/svg" height="30" width="30" viewBox="0 0 600 600" class="absolute top-1/2 -translate-y-1/2 -right-4 group-hover:-right-7 ease-in-out duration-100 "><path fill="#ffffff" d="M598.6 342.6C611.1 330.1 611.1 309.8 598.6 297.3L470.6 169.3C458.1 156.8 437.8 156.8 425.3 169.3C412.8 181.8 412.8 202.1 425.3 214.6L498.7 288L64 288C46.3 288 32 302.3 32 320C32 337.7 46.3 352 64 352L498.7 352L425.3 425.4C412.8 437.9 412.8 458.2 425.3 470.7C437.8 483.2 458.1 483.2 470.6 470.7L598.6 342.7z"/></svg></button>
+    <div class="flex-grow flex items-center relative w-full -mt-10 sm:mt-0">
+        <div class="max-w-1400 mx-auto w-full px-3 min-[400px]:px-6 sm:px-12 md:px-16 lg:px-28">
+            <div class="flex flex-row items-center justify-between w-full gap-1 sm:gap-6 lg:gap-10">
+                <!-- Left Side: Text -->
+                <div class="flex-shrink-0 text-left z-10 w-[50%] sm:w-[50%] md:w-auto">
+                    <h1 class="pointer-events-none text-[22px] min-[400px]:text-[26px] sm:text-[38px] md:text-[46px] lg:text-[64px] font-['Montserrat'] font-semibold leading-tight">Ayush Garg</h1>
+                    <p class="pointer-events-none text-[11px] min-[400px]:text-[13px] sm:text-[15px] md:text-[17px] lg:text-lg font-['merriweather'] italic mb-4 sm:mb-6 lg:mb-8 mt-1 sm:mt-3 lg:mt-4">Java Full Stack Developer</p>
+                    <button id="aboutBtn" class="bg-[#4595eb] relative text-[10px] min-[400px]:text-[12px] sm:text-[15px] md:text-[16px] lg:text-[18px] py-1.5 px-2 sm:py-2 sm:px-4 lg:px-5 rounded font-extrabold bg-gradient-to-l from-[#1595b6] to-[hsla(234,54%,26%,1)] hover:scale-110 ease-in-out duration-100 group aboutBtn">About me <svg xmlns="http://www.w3.org/2000/svg" class="absolute top-1/2 -translate-y-1/2 -right-3 group-hover:-right-5 sm:-right-4 sm:group-hover:-right-6 lg:-right-4 lg:group-hover:-right-7 ease-in-out duration-100 h-[16px] w-[16px] min-[400px]:h-[20px] min-[400px]:w-[20px] sm:h-[26px] sm:w-[26px] md:h-[28px] md:w-[28px] lg:h-[30px] lg:w-[30px]" viewBox="0 0 600 600"><path fill="#ffffff" d="M598.6 342.6C611.1 330.1 611.1 309.8 598.6 297.3L470.6 169.3C458.1 156.8 437.8 156.8 425.3 169.3C412.8 181.8 412.8 202.1 425.3 214.6L498.7 288L64 288C46.3 288 32 302.3 32 320C32 337.7 46.3 352 64 352L498.7 352L425.3 425.4C412.8 437.9 412.8 458.2 425.3 470.7C437.8 483.2 458.1 483.2 470.6 470.7L598.6 342.7z"/></svg></button>
+                </div>
+                
+                <!-- Right Side: Logo -->
+                <div class="flex justify-center items-center z-0 mr-0 min-[400px]:mr-2 sm:mr-14 md:mr-24 lg:mr-8">
+                    <svg id="heroLogoSvg" class="w-[240px] h-[240px] scale-125 sm:scale-100 sm:w-[280px] sm:h-[280px] md:w-[350px] md:h-[350px] lg:w-[500px] lg:h-[500px] pointer-events-none drop-shadow-[0_0_30px_rgba(21,149,182,0.15)]" viewBox="0 0 406 368" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M314.899 203.5L314.899 349.43L162.5 209.053M314.899 203.5L283.037 203.586M314.899 203.5L337.881 203.586L381 171.109L314.899 171.109M162.5 209.053L118.044 170.96L157.5 171.109M162.5 209.053L65.5 301.465L20.5595 301.465L137.482 189.156M200.5 171.109L283.037 96.5L283.037 171.109M200.5 171.109L283.037 171.109M200.5 171.109L157.5 171.109M283.037 203.586L210.846 203.123L283.037 271.086L283.037 203.586ZM283.037 171.109L314.899 171.109M157.5 171.109L316.135 20.4322L314.899 171.109" stroke="#1F2667" stroke-opacity="0.9" stroke-width="10"/>
+                        <path d="M314.899 203.5L314.899 349.43L162.5 209.053M314.899 203.5L283.037 203.586M314.899 203.5L337.881 203.586L381 171.109L314.899 171.109M162.5 209.053L118.044 170.96L157.5 171.109M162.5 209.053L65.5 301.465L20.5595 301.465L137.482 189.156M200.5 171.109L283.037 96.5L283.037 171.109M200.5 171.109L283.037 171.109M200.5 171.109L157.5 171.109M283.037 203.586L210.846 203.123L283.037 271.086L283.037 203.586ZM283.037 171.109L314.899 171.109M157.5 171.109L316.135 20.4322L314.899 171.109" stroke="url(#paint0_linear)" stroke-width="10"/>
+                        <defs>
+                            <linearGradient id="paint0_linear" x1="205.549" y1="20.0169" x2="204.338" y2="342.461" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#1595B6"/>
+                            <stop offset="1" stop-color="#1595B6" stop-opacity="0"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
                 </div>
             </div>
-           
-          
         </div>
-          
-
-
-       <ul class="w-7 ml-auto mr-8 space-y-4 text-[#b0b2c3] absolute right-4 hidden md:block">
+    </div>
+       <ul class="w-7 ml-auto mr-8 space-y-4 text-[#b0b2c3] absolute right-4 top-1/2 -translate-y-1/2 hidden sm:block z-50">
             <li>
                 <a href="https://www.linkedin.com/in/ayush-garg34/" target="_blank">
                     <svg class="w-full hover:text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
@@ -2028,18 +2033,17 @@
   // Mobile hamburger menu
   const mobileMenuBtn = document.getElementById('mobileMenuBtn');
   const mobileNavMenu = document.getElementById('mobileNavMenu');
-  const mobileBars    = mobileMenuBtn ? mobileMenuBtn.querySelectorAll('.mob-bar') : [];
   let menuOpen = false;
+
+  const svgHamburger = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>`;
+  const svgClose = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>`;
 
   function openMenu() {
     menuOpen = true;
     mobileNavMenu.classList.add('open');
     mobileNavMenu.setAttribute('aria-hidden', 'false');
-    // Animate hamburger â†’ X
-    if (mobileBars.length === 3) {
-      mobileBars[0].style.transform = 'translateY(7px) rotate(45deg)';
-      mobileBars[1].style.opacity  = '0';
-      mobileBars[2].style.transform = 'translateY(-7px) rotate(-45deg)';
+    if (mobileMenuBtn) {
+      mobileMenuBtn.innerHTML = svgClose;
     }
   }
 
@@ -2047,11 +2051,8 @@
     menuOpen = false;
     mobileNavMenu.classList.remove('open');
     mobileNavMenu.setAttribute('aria-hidden', 'true');
-    // Animate X â†’ hamburger
-    if (mobileBars.length === 3) {
-      mobileBars[0].style.transform = '';
-      mobileBars[1].style.opacity  = '1';
-      mobileBars[2].style.transform = '';
+    if (mobileMenuBtn) {
+      mobileMenuBtn.innerHTML = svgHamburger;
     }
   }
 
