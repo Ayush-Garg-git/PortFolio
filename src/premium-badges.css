@@ -1,0 +1,136 @@
+/* ── ULTRA PREMIUM ANIMATED BADGES ── */
+.ultra-badge {
+  position: relative;
+  display: inline-flex;
+  cursor: default;
+  margin: 4px;
+  border-radius: 9999px;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(16px);
+  padding: 2px; /* Space for the animated border */
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255,255,255,0.05);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+}
+
+.ultra-badge:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 10px 30px var(--badge-glow-color), 0 0 0 1px rgba(255,255,255,0.1);
+}
+
+/* The spinning border container */
+.ultra-badge .badge-border-wrap {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* The spinning gradient */
+.ultra-badge .badge-border-spin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(from 0deg, transparent 0%, transparent 60%, var(--badge-color) 100%);
+  transform-origin: 0 0;
+  animation: spin-border 3s linear infinite;
+}
+
+/* The inner pill */
+.ultra-badge .badge-inner {
+  position: relative;
+  z-index: 1;
+  background: rgba(12, 12, 12, 0.95);
+  border-radius: 9999px;
+  padding: 6px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  overflow: hidden;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+}
+
+/* Laser sweep */
+.ultra-badge .badge-laser {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  transform: skewX(-20deg);
+  animation: laser-sweep 4s ease-in-out infinite;
+}
+
+/* Noise texture */
+.ultra-badge .badge-noise {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.08;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+.ultra-badge .badge-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--badge-color);
+  filter: drop-shadow(0 0 8px var(--badge-color));
+}
+
+.ultra-badge .badge-icon svg {
+  width: 14px;
+  height: 14px;
+  stroke-width: 2.5px;
+}
+
+.ultra-badge .badge-text {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(255,255,255,0.2);
+}
+
+/* Animations */
+@keyframes spin-border {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes laser-sweep {
+  0% { left: -100%; }
+  15% { left: 200%; }
+  100% { left: 200%; }
+}
+
+/* Theme variables */
+.badge-project { 
+  --badge-color: #10b981; 
+  --badge-glow-color: rgba(16, 185, 129, 0.3);
+} 
+.badge-client { 
+  --badge-color: #0ea5e9; 
+  --badge-glow-color: rgba(14, 165, 233, 0.3);
+}  
+.badge-startup { 
+  --badge-color: #f59e0b; 
+  --badge-glow-color: rgba(245, 158, 11, 0.3);
+} 
+.badge-hackathon { 
+  --badge-color: #d946ef; 
+  --badge-glow-color: rgba(217, 70, 239, 0.3);
+} 
+
+/* Light mode overrides */
+body.light-mode .ultra-badge .badge-inner { background: rgba(255, 255, 255, 0.95); box-shadow: inset 0 1px 3px rgba(0,0,0,0.1); }
+body.light-mode .ultra-badge .badge-text { color: #0f172a; text-shadow: none; font-weight: 900; }
+body.light-mode .ultra-badge .badge-icon { filter: none; }
+body.light-mode .ultra-badge { box-shadow: 0 4px 15px rgba(0,0,0,0.08), 0 0 0 1px rgba(0,0,0,0.05); }
+body.light-mode .ultra-badge:hover { box-shadow: 0 10px 25px var(--badge-glow-color), 0 0 0 1px rgba(0,0,0,0.1); }

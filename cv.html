@@ -182,9 +182,8 @@
   position: relative;
   width: 100%;
   max-width: 580px;
-  height: 380px;
   transform-style: preserve-3d;
-      transition: transform 0s;
+  transition: transform 0s;
   animation: floatHolo 8s ease-in-out infinite;
 }
 
@@ -194,7 +193,7 @@
 }
 
 .holo-card {
-  position: absolute;
+  position: relative;
   inset: 0;
   background: rgba(8, 12, 24, 0.4);
   border-radius: 32px;
@@ -208,6 +207,7 @@
   flex-direction: column;
   padding: 36px;
   overflow: hidden;
+  min-height: 340px;
 }
 
 .holo-card::before {
@@ -431,10 +431,26 @@
 }
 
 @media (max-width: 768px) {
-  .holo-avatar-area { flex-direction: column; text-align: center; gap: 24px; }
+  .holo-avatar-area { flex-direction: column; text-align: center; gap: 20px; }
   .holo-tags { justify-content: center; }
-  .holo-name { font-size: 2.4rem; }
-  .holo-card { padding: 32px 24px; }
+  .holo-name { font-size: 2.2rem; }
+  .holo-card { padding: 28px 20px; min-height: unset; }
+  .holo-header { font-size: 0.62rem; letter-spacing: 0.12em; margin-bottom: 20px; }
+  .holo-footer { font-size: 0.58rem; letter-spacing: 0.08em; flex-wrap: wrap; gap: 8px; }
+  .holo-avatar { width: 110px; height: 110px; }
+  .holo-info { gap: 10px; }
+  .holo-role { font-size: 0.78rem; letter-spacing: 0.08em; }
+}
+
+@media (max-width: 420px) {
+  .cv-hero { padding: 80px 12px 20px; }
+  .holo-name { font-size: 1.8rem; }
+  .holo-card { padding: 22px 16px; border-radius: 22px; }
+  .holo-header { font-size: 0.55rem; letter-spacing: 0.08em; }
+  .holo-avatar { width: 90px; height: 90px; }
+  .holo-role { font-size: 0.68rem; }
+  .holo-tag { font-size: 0.55rem; padding: 3px 9px; }
+  .holo-footer { font-size: 0.52rem; }
 }
       .t-line { white-space: normal; }
     }
@@ -637,6 +653,181 @@
 
     @keyframes blinkText { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
 
+    /* ── Mobile Vertical Timeline ── */
+    .mobile-timeline-scene {
+      display: none;
+      width: 100%;
+      max-width: 460px;
+      margin: 0 auto;
+      padding: 40px 20px 60px 56px;
+      flex-direction: column;
+      gap: 0;
+      position: relative;
+      perspective: 1000px;
+    }
+
+    /* Glowing vertical spine */
+    .mt-spine {
+      position: absolute;
+      left: 38px;
+      top: 20px;
+      bottom: 60px;
+      width: 2px;
+      background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        var(--cyan2) 8%,
+        rgba(99, 102, 241, 0.7) 50%,
+        var(--cyan) 92%,
+        transparent 100%
+      );
+      box-shadow: 0 0 10px rgba(34, 211, 238, 0.25), 0 0 20px rgba(34, 211, 238, 0.1);
+    }
+
+    /* Pulsing node on spine */
+    .mt-node {
+      position: absolute;
+      left: -30px;
+      top: 22px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--card-color);
+      box-shadow:
+        0 0 0 3px rgba(2, 4, 8, 0.95),
+        0 0 0 4.5px var(--card-color),
+        0 0 16px var(--card-color);
+      z-index: 2;
+      animation: nodePulse 2.5s ease-in-out infinite;
+    }
+    @keyframes nodePulse {
+      0%, 100% {
+        box-shadow: 0 0 0 3px rgba(2,4,8,0.95), 0 0 0 4.5px var(--card-color), 0 0 10px var(--card-color);
+      }
+      50% {
+        box-shadow: 0 0 0 3px rgba(2,4,8,0.95), 0 0 0 5px var(--card-color), 0 0 24px var(--card-color), 0 0 40px var(--card-color);
+      }
+    }
+
+    /* Horizontal connector from node to card */
+    .mt-connector {
+      position: absolute;
+      left: -18px;
+      top: 27px;
+      width: 18px;
+      height: 1px;
+      background: linear-gradient(to right, var(--card-color), transparent);
+      opacity: 0.6;
+    }
+
+    @media (max-width: 750px) {
+      .cube-scene, .cube-hint { display: none !important; }
+      .mobile-timeline-scene { display: flex; }
+    }
+
+    .mt-card {
+      position: relative;
+      padding-bottom: 28px;
+      opacity: 0;
+      transform: translateX(50px) rotateY(-15deg);
+      transform-origin: left center;
+      transform-style: preserve-3d;
+      will-change: transform, opacity;
+    }
+
+    /* Glassmorphism inner card */
+    .mt-card-inner {
+      background: rgba(6, 10, 20, 0.78);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-left: 2px solid var(--card-color);
+      border-radius: 16px;
+      padding: 20px 18px 16px;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      position: relative;
+      overflow: hidden;
+      box-shadow:
+        0 20px 45px rgba(0, 0, 0, 0.55),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+    }
+    /* Ambient color wash top-left */
+    .mt-card-inner::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 55%; height: 100%;
+      background: radial-gradient(ellipse at top left, var(--card-color) 0%, transparent 70%);
+      opacity: 0.06;
+      pointer-events: none;
+    }
+    /* Huge phase number watermark */
+    .mt-phase-num {
+      position: absolute;
+      bottom: -8px;
+      right: 12px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 5rem;
+      font-weight: 900;
+      color: var(--card-color);
+      opacity: 0.05;
+      line-height: 1;
+      pointer-events: none;
+      letter-spacing: -0.04em;
+      user-select: none;
+    }
+
+    .mt-card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .mt-icon {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.4);
+      flex-shrink: 0;
+    }
+
+    .mt-title { font-family: 'Montserrat', sans-serif; font-size: 0.98rem; font-weight: 800; color: #fff; line-height: 1.2; }
+    .mt-period { font-size: 0.6rem; font-weight: 700; color: var(--card-color); letter-spacing: 0.12em; text-transform: uppercase; margin-top: 3px; }
+
+    .mt-desc { font-size: 0.78rem; color: #94a3b8; line-height: 1.65; margin-bottom: 14px; position: relative; z-index: 1; }
+
+    .mt-img-container { display: none; }
+    .mt-img { display: none; }
+
+    .mt-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 11px;
+      border-radius: 20px;
+      font-size: 0.58rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--card-color);
+      border: 1px solid var(--card-color);
+      background: transparent;
+      position: relative;
+      z-index: 1;
+    }
+    .mt-tag::before {
+      content: '';
+      display: inline-block;
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: var(--card-color);
+      flex-shrink: 0;
+    }
+
     /* Light Mode */
         /* Light Mode Adjustments */
     body.light-mode .hud-title {
@@ -664,6 +855,20 @@
     body.light-mode .cf-title { color: #0f172a; }
     body.light-mode .cf-desc { color: #334155; }
     body.light-mode .cf-period { color: #64748b; }
+
+    /* Mobile Timeline Light Mode */
+    body.light-mode .mt-card-inner {
+      background: rgba(255, 255, 255, 0.9);
+      border-color: rgba(0, 0, 0, 0.06);
+      border-left-color: var(--card-color);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.07);
+    }
+    body.light-mode .mt-card-inner::before { opacity: 0.03; }
+    body.light-mode .mt-title { color: #0f172a; }
+    body.light-mode .mt-desc { color: #475569; }
+    body.light-mode .mt-node { box-shadow: 0 0 0 3px rgba(255,255,255,0.95), 0 0 0 4.5px var(--card-color), 0 0 14px var(--card-color); }
+    body.light-mode .mt-spine { opacity: 0.3; }
+    body.light-mode .mt-icon { background: rgba(0,0,0,0.02); border-color: rgba(0,0,0,0.08); }
     
     @media (max-width: 500px) {
       .cube-scene { width: 260px; height: 260px; }
@@ -838,7 +1043,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
-<body class="light-mode">
+<body>
 
   <!-- BACKGROUND LAYERS -->
   <div class="grid-bg"></div>
@@ -980,7 +1185,7 @@
       <div class="hud-line"></div>
       <div class="hud-content">
         <div class="hud-title">Professional Journey</div>
-        <div class="hud-status">Data Log: SYSR2026 // Cube Archive</div>
+        <div class="hud-status">Timeline // Work &amp; Leadership</div>
       </div>
       <div class="hud-line rev"></div>
     </div>
@@ -990,6 +1195,11 @@
         <div class="cube-core"></div>
         <!-- Faces injected by JS -->
       </div>
+    </div>
+
+    <div class="mobile-timeline-scene" id="mobileTimeline">
+      <div class="mt-spine"></div>
+      <!-- Cards injected by JS -->
     </div>
 
     <div class="cube-hint">
@@ -1031,12 +1241,12 @@
 
   /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
      CHAPTER DATA
-  â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+  =====================================================================  */
 
     const CHAPTERS = [
     {
       num: '01',
-      icon: 'ðŸ¤',
+      icon: '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
       title: 'PPC Head',
       period: '2 Years',
       desc: 'Placement Preparation Committee Head. Handled college placements, prepared students, and organized events.',
@@ -1046,7 +1256,7 @@
     },
     {
       num: '02',
-      icon: 'ðŸ¢',
+      icon: '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>',
       title: 'Trainee Engineer',
       period: '3 Months',
       desc: 'Interned at Comviva. Gained real-world exposure to enterprise systems and secured a Pre-Placement Offer (PPO).',
@@ -1056,7 +1266,7 @@
     },
     {
       num: '03',
-      icon: 'ðŸŽ¯',
+      icon: '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>',
       title: 'LEET AIR 62',
       period: 'Preparation',
       desc: 'Prepared rigorously for the LEET exam to enter B.Tech, securing an impressive All India Rank of 62 in IPU CET.',
@@ -1065,27 +1275,27 @@
     },
     {
       num: '04',
-      icon: 'ðŸš€',
+      icon: '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>',
       title: 'Vibora Founder',
       period: 'Active',
-      desc: 'Founded "Vibora" customizing goodies. â‚¹30,000+ sales in 3 months. <a href="https://viboraonline.in" target="_blank" style="color:var(--card-color); text-decoration:none; font-weight:bold;">viboraonline.in</a>',
+      desc: 'Founded "Vibora" customizing goodies. ₹30,000+ sales in 3 months. <a href="https://viboraonline.in" target="_blank" style="color:var(--card-color); text-decoration:none; font-weight:bold;">viboraonline.in</a>',
       tag: 'Startup',
-      color: '#ffff00',
+      color: '#f59e0b',
       image: './assets/images/CV-Evidencer/StartupPlanner.jpeg'
     },
     {
       num: '05',
-      icon: 'ðŸ†',
+      icon: '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/></svg>',
       title: 'Hackathon Victor',
       period: 'Achievement',
-      desc: 'Secured 2nd position and won a â‚¹12,000 cash prize at the SGT University CodeSphere Hackathon.',
+      desc: 'Secured 2nd position and won a ₹12,000 cash prize at the SGT University CodeSphere Hackathon.',
       tag: 'Hackathon',
       color: '#ff00aa',
       image: './assets/images/CV-Evidencer/HackathonWin.jpg'
     },
     {
       num: '06',
-      icon: 'âš¡',
+      icon: '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>',
       title: 'Full Stack Dev',
       period: 'Current',
       desc: 'Working at StaplerLabs as a Full Stack Developer, building robust web applications and APIs.',
@@ -1100,10 +1310,11 @@
   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
   (function () {
     const cube = document.getElementById('dataCube');
+    const mobileTimeline = document.getElementById('mobileTimeline');
     if (!cube) return;
 
-    // 1. Render Faces
-    let html = '';
+    // 1. Render Cube Faces (original order)
+    let cubeHtml = '';
     CHAPTERS.forEach((ch, i) => {
       const hex = ch.color.replace('#', '');
       const r = parseInt(hex.substring(0,2), 16);
@@ -1111,7 +1322,7 @@
       const b = parseInt(hex.substring(4,6), 16);
       const glowColor = `rgba(${r}, ${g}, ${b}, 0.3)`;
 
-      html += `
+      cubeHtml += `
         <div class="cube-face face-${i+1}" style="--card-color: ${ch.color}; --card-color-glow: ${glowColor};">
           <div class="cf-num">Phase ${ch.num}</div>
           <div class="cf-header">
@@ -1131,7 +1342,62 @@
         </div>
       `;
     });
-    cube.insertAdjacentHTML('beforeend', html);
+    cube.insertAdjacentHTML('beforeend', cubeHtml);
+
+    // 2. Render Mobile Timeline (custom order)
+    // [4]=Hackathon Victor, [3]=Vibora Founder, [1]=Comviva Trainee, [5]=StaplerLabs Dev, [0]=PPC Head
+    const MOBILE_ORDER = [4, 3, 1, 5, 0];
+    let mobileHtml = '';
+    MOBILE_ORDER.forEach((idx) => {
+      const ch = CHAPTERS[idx];
+      const hex = ch.color.replace('#', '');
+      const r = parseInt(hex.substring(0,2), 16);
+      const g = parseInt(hex.substring(2,4), 16);
+      const b = parseInt(hex.substring(4,6), 16);
+      const glowColor = `rgba(${r}, ${g}, ${b}, 0.3)`;
+
+      mobileHtml += `
+        <div class="mt-card" style="--card-color: ${ch.color};">
+          <div class="mt-node"></div>
+          <div class="mt-connector"></div>
+          <div class="mt-card-inner">
+            <div class="mt-phase-num">${ch.num}</div>
+            <div class="mt-card-header">
+              <div class="mt-icon" style="color: ${ch.color}; border-color: ${glowColor}; box-shadow: 0 0 14px ${glowColor}, inset 0 0 10px rgba(0,0,0,0.4);">${ch.icon}</div>
+              <div>
+                <div class="mt-title">${ch.title}</div>
+                <div class="mt-period">${ch.period}</div>
+              </div>
+            </div>
+            <div class="mt-desc">${ch.desc}</div>
+            <div class="mt-tag" style="color: ${ch.color}; border-color: ${glowColor};">${ch.tag}</div>
+          </div>
+        </div>
+      `;
+    });
+    if(mobileTimeline) mobileTimeline.insertAdjacentHTML('beforeend', mobileHtml);
+
+    // Initialize ScrollTrigger for mobile timeline cards
+    if(window.gsap && window.ScrollTrigger) {
+      gsap.utils.toArray('.mt-card').forEach((card, index) => {
+        gsap.fromTo(card,
+          { opacity: 0, x: 50, rotateY: -15 },
+          {
+            scrollTrigger: {
+              trigger: card,
+              start: "top 88%",
+              toggleActions: "play none none reverse"
+            },
+            opacity: 1,
+            x: 0,
+            rotateY: 0,
+            duration: 0.75,
+            delay: index * 0.08,
+            ease: "power3.out"
+          }
+        );
+      });
+    }
 
     // 2. Interactive Drag to Rotate
     let isDragging = false;
@@ -1431,7 +1697,7 @@
 
       /* â”€â”€ config â”€â”€ */
       const TEXT        = "LET'S CONNECT";
-      let   FONT_SIZE   = 110;          // dynamically set in resize()
+      let   FONT_SIZE   = 110;          // base — overridden responsively in resize()
       const DOT_RADIUS  = 2.2;
       const DOT_GAP     = 6;
       const SCATTER_R   = 260;
@@ -1544,7 +1810,17 @@
       function resize() {
         ratio  = window.devicePixelRatio || 1;
         const wrapW = wrapper.offsetWidth;
-        const rawH  = Math.round(Math.min(wrapW * 0.28, 220));
+        // Auto-fit: measure real text width, step down until it fits in 90% of container
+        const probe = document.createElement('canvas').getContext('2d');
+        let fs = 110;
+        probe.font = `900 ${fs}px 'Montserrat', 'Arial Black', sans-serif`;
+        const maxW = wrapW * 0.90;
+        while (probe.measureText(TEXT).width > maxW && fs > 24) {
+          fs -= 2;
+          probe.font = `900 ${fs}px 'Montserrat', 'Arial Black', sans-serif`;
+        }
+        FONT_SIZE = fs;
+        const rawH  = Math.round(FONT_SIZE * 1.6);
         W = Math.round(wrapW * ratio);
         H = Math.round(rawH  * ratio);
         canvas.width  = W;
