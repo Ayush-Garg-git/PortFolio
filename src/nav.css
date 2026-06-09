@@ -410,22 +410,30 @@ body.light-mode .mobile-action-btn:hover { color: #111; }
 
 /* ── Hero Background Geometric 'A' Logo ── */
 #heroBackgroundSvg {
-  position: absolute;
-  right: -10px;
-  top: 120px;
-  height: 140px;
+  position: relative;
+  height: 80px;
   width: auto;
   z-index: 0;
   pointer-events: none;
-  opacity: 0.4; /* Fade it out slightly on mobile so it's a subtle watermark */
+  opacity: 1;
+  margin-bottom: 16px;
+}
+
+@media (max-width: 380px) {
+  #heroBackgroundSvg {
+    height: 65px;
+    margin-bottom: 12px;
+  }
 }
 
 @media (min-width: 640px) {
   #heroBackgroundSvg {
-    right: 20px;
-    top: 100px;
-    height: 220px;
-    opacity: 0.7;
+    position: absolute; /* Reset to absolute for larger screens */
+    left: auto;
+    right: 40px;
+    top: 120px;
+    height: 180px;
+    margin-bottom: 0;
   }
 }
 

@@ -53,10 +53,8 @@
         </a>
       </div>
       <!-- Hamburger: mobile only -->
-      <button id="mobileMenuBtn" class="md:hidden cursor-pointer hamburger-pill" aria-label="Toggle menu">
-        <span class="mob-bar w-[18px] h-[2px] bg-current transition-all duration-300 origin-center block"></span>
-        <span class="mob-bar w-[18px] h-[2px] bg-current transition-all duration-300 origin-center block"></span>
-        <span class="mob-bar w-[18px] h-[2px] bg-current transition-all duration-300 origin-center block"></span>
+      <button id="mobileMenuBtn" class="md:hidden cursor-pointer" aria-label="Toggle menu" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: rgba(21, 149, 182, 0.1); border: 1px solid rgba(21, 149, 182, 0.3); border-radius: 12px; color: #1595b6; transition: all 0.3s ease;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
       </button>
     </div>
     </header>
@@ -90,24 +88,24 @@
           
     </div>
 
-    <!-- Hero Background Geometric SVG â€” absolutely from section so it sits beside the name -->
-    <svg id="heroBackgroundSvg" class="pointer-events-none" viewBox="0 0 406 368" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M314.899 203.5L314.899 349.43L162.5 209.053M314.899 203.5L283.037 203.586M314.899 203.5L337.881 203.586L381 171.109L314.899 171.109M162.5 209.053L118.044 170.96L157.5 171.109M162.5 209.053L65.5 301.465L20.5595 301.465L137.482 189.156M200.5 171.109L283.037 96.5L283.037 171.109M200.5 171.109L283.037 171.109M200.5 171.109L157.5 171.109M283.037 203.586L210.846 203.123L283.037 271.086L283.037 203.586ZM283.037 171.109L314.899 171.109M157.5 171.109L316.135 20.4322L314.899 171.109" stroke="#1F2667" stroke-opacity="0.9" stroke-width="10"/>
-        <path d="M314.899 203.5L314.899 349.43L162.5 209.053M314.899 203.5L283.037 203.586M314.899 203.5L337.881 203.586L381 171.109L314.899 171.109M162.5 209.053L118.044 170.96L157.5 171.109M162.5 209.053L65.5 301.465L20.5595 301.465L137.482 189.156M200.5 171.109L283.037 96.5L283.037 171.109M200.5 171.109L283.037 171.109M200.5 171.109L157.5 171.109M283.037 203.586L210.846 203.123L283.037 271.086L283.037 203.586ZM283.037 171.109L314.899 171.109M157.5 171.109L316.135 20.4322L314.899 171.109" stroke="url(#paint0_linear)" stroke-width="10"/>
-        <defs>
-            <linearGradient id="paint0_linear" x1="205.549" y1="20.0169" x2="204.338" y2="342.461" gradientUnits="userSpaceOnUse">
-            <stop stop-color="#1595B6"/>
-            <stop offset="1" stop-color="#1595B6" stop-opacity="0"/>
-            </linearGradient>
-        </defs>
-    </svg>
-
     <div class="flex -mt-10 relative ">
-        <div class="max-w-1400  mx-auto w-full -mt-10">
-            <div class="relative ml-6 sm:ml-28 mt-5">
- <h1  class="pointer-events-none text-[40px] sm:text-[48px] md:text-[64px] font-['Montserrat'] font-semibold mr-4 sm:mr-20">Ayush Garg</h1>
-            <p class="pointer-events-none text-[16px] sm:text-lg font-['merriweather'] italic mb-8 mt-4">Java Full Stack Developer</p>
-            <button id="aboutBtn" class="bg-[#4595eb] relative text-[16px] sm:text-[18px] py-2 px-5 rounded font-extrabold bg-gradient-to-l from-[#1595b6] to-[hsla(234,54%,26%,1)] hover:scale-110 ease-in-out duration-100 group aboutBtn">About me <svg xmlns="http://www.w3.org/2000/svg" height="30" width="30" viewBox="0 0 600 600" class="absolute top-1/2 -translate-y-1/2 -right-4 group-hover:-right-7 ease-in-out duration-100 "><path fill="#ffffff" d="M598.6 342.6C611.1 330.1 611.1 309.8 598.6 297.3L470.6 169.3C458.1 156.8 437.8 156.8 425.3 169.3C412.8 181.8 412.8 202.1 425.3 214.6L498.7 288L64 288C46.3 288 32 302.3 32 320C32 337.7 46.3 352 64 352L498.7 352L425.3 425.4C412.8 437.9 412.8 458.2 425.3 470.7C437.8 483.2 458.1 483.2 470.6 470.7L598.6 342.7z"/></svg></button>
+        <div class="max-w-1400 mx-auto w-full -mt-10 relative flex flex-col sm:block items-center">
+            <!-- Hero Background Geometric SVG -->
+            <svg id="heroBackgroundSvg" class="pointer-events-none" viewBox="0 0 406 368" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M314.899 203.5L314.899 349.43L162.5 209.053M314.899 203.5L283.037 203.586M314.899 203.5L337.881 203.586L381 171.109L314.899 171.109M162.5 209.053L118.044 170.96L157.5 171.109M162.5 209.053L65.5 301.465L20.5595 301.465L137.482 189.156M200.5 171.109L283.037 96.5L283.037 171.109M200.5 171.109L283.037 171.109M200.5 171.109L157.5 171.109M283.037 203.586L210.846 203.123L283.037 271.086L283.037 203.586ZM283.037 171.109L314.899 171.109M157.5 171.109L316.135 20.4322L314.899 171.109" stroke="#1F2667" stroke-opacity="0.9" stroke-width="10"/>
+                <path d="M314.899 203.5L314.899 349.43L162.5 209.053M314.899 203.5L283.037 203.586M314.899 203.5L337.881 203.586L381 171.109L314.899 171.109M162.5 209.053L118.044 170.96L157.5 171.109M162.5 209.053L65.5 301.465L20.5595 301.465L137.482 189.156M200.5 171.109L283.037 96.5L283.037 171.109M200.5 171.109L283.037 171.109M200.5 171.109L157.5 171.109M283.037 203.586L210.846 203.123L283.037 271.086L283.037 203.586ZM283.037 171.109L314.899 171.109M157.5 171.109L316.135 20.4322L314.899 171.109" stroke="url(#paint0_linear)" stroke-width="10"/>
+                <defs>
+                    <linearGradient id="paint0_linear" x1="205.549" y1="20.0169" x2="204.338" y2="342.461" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#1595B6"/>
+                    <stop offset="1" stop-color="#1595B6" stop-opacity="0"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+
+            <div class="relative ml-0 sm:ml-28 mt-4 sm:mt-5 flex flex-col items-center sm:items-start text-center sm:text-left">
+                <h1  class="pointer-events-none text-[40px] sm:text-[48px] md:text-[64px] font-['Montserrat'] font-semibold mr-0 sm:mr-20">Ayush Garg</h1>
+                <p class="pointer-events-none text-[16px] sm:text-lg font-['merriweather'] italic mb-8 mt-2 sm:mt-4">Java Full Stack Developer</p>
+                <button id="aboutBtn" class="bg-[#4595eb] relative text-[16px] sm:text-[18px] py-2 px-5 rounded font-extrabold bg-gradient-to-l from-[#1595b6] to-[hsla(234,54%,26%,1)] hover:scale-110 ease-in-out duration-100 group aboutBtn">About me <svg xmlns="http://www.w3.org/2000/svg" height="30" width="30" viewBox="0 0 600 600" class="absolute top-1/2 -translate-y-1/2 -right-4 group-hover:-right-7 ease-in-out duration-100 "><path fill="#ffffff" d="M598.6 342.6C611.1 330.1 611.1 309.8 598.6 297.3L470.6 169.3C458.1 156.8 437.8 156.8 425.3 169.3C412.8 181.8 412.8 202.1 425.3 214.6L498.7 288L64 288C46.3 288 32 302.3 32 320C32 337.7 46.3 352 64 352L498.7 352L425.3 425.4C412.8 437.9 412.8 458.2 425.3 470.7C437.8 483.2 458.1 483.2 470.6 470.7L598.6 342.7z"/></svg></button>
             </div>
            
           
